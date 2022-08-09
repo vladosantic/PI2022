@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using PI2022.Models;
 
 namespace PI2022.Data
 {
@@ -9,5 +10,6 @@ namespace PI2022.Data
             : base(options)
         {
         }
+        public DbSet<PI2022.Models.UsersModel>? UsersModel { get; set; }
     }
 }
