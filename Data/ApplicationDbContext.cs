@@ -10,6 +10,6 @@ namespace PI2022.Data
             : base(options)
         {
         }
-        public DbSet<PI2022.Models.UsersModel>? UsersModel { get; set; }
+        public DbSet<PI2022.Models.Employees>? Employees { get; set; }
     }
 }

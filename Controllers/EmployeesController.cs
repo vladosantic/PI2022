@@ -10,87 +10,87 @@ using PI2022.Models;
 
 namespace PI2022.Controllers
 {
-    public class UsersController : Controller
+    public class EmployeesController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public UsersController(ApplicationDbContext context)
+        public EmployeesController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Users
+        // GET: Employees
         public async Task<IActionResult> Index()
         {
-            return _context.UsersModel != null ?
-                        View(await _context.UsersModel.ToListAsync()) :
-                        Problem("Entity set 'ApplicationDbContext.UsersModel'  is null.");
+            return _context.Employees != null ?
+                        View(await _context.Employees.ToListAsync()) :
+                        Problem("Entity set 'ApplicationDbContext.Employees'  is null.");
         }
 
-        // GET: Users/Details/5
+        // GET: Employees/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.UsersModel == null)
+            if (id == null || _context.Employees == null)
             {
                 return NotFound();
             }
 
-            var usersModel = await _context.UsersModel
+            var employees = await _context.Employees
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (usersModel == null)
+            if (employees == null)
             {
                 return NotFound();
             }
 
-            return View(usersModel);
+            return View(employees);
         }
 
-        // GET: Users/Create
+        // GET: Employees/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Users/Create
+        // POST: Employees/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Ime,Prezime,Adresa,Telefon,Email,Pozicija,Certifikati")] UsersModel usersModel)
+        public async Task<IActionResult> Create([Bind("Id,Ime,Prezime,Adresa,Telefon,Email,Pozicija,Certifikati")] Employees employees)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(usersModel);
+                _context.Add(employees);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(usersModel);
+            return View(employees);
         }
 
-        // GET: Users/Edit/5
+        // GET: Employees/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.UsersModel == null)
+            if (id == null || _context.Employees == null)
             {
                 return NotFound();
             }
 
-            var usersModel = await _context.UsersModel.FindAsync(id);
-            if (usersModel == null)
+            var employees = await _context.Employees.FindAsync(id);
+            if (employees == null)
             {
                 return NotFound();
             }
-            return View(usersModel);
+            return View(employees);
         }
 
-        // POST: Users/Edit/5
+        // POST: Employees/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Ime,Prezime,Adresa,Telefon,Email,Pozicija,Certifikati")] UsersModel usersModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Ime,Prezime,Adresa,Telefon,Email,Pozicija,Certifikati")] Employees employees)
         {
-            if (id != usersModel.Id)
+            if (id != employees.Id)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace PI2022.Controllers
             {
                 try
                 {
-                    _context.Update(usersModel);
+                    _context.Update(employees);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UsersModelExists(usersModel.Id))
+                    if (!EmployeesExists(employees.Id))
                     {
                         return NotFound();
                     }
@@ -115,49 +115,49 @@ namespace PI2022.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(usersModel);
+            return View(employees);
         }
 
-        // GET: Users/Delete/5
+        // GET: Employees/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.UsersModel == null)
+            if (id == null || _context.Employees == null)
             {
                 return NotFound();
             }
 
-            var usersModel = await _context.UsersModel
+            var employees = await _context.Employees
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (usersModel == null)
+            if (employees == null)
             {
                 return NotFound();
             }
 
-            return View(usersModel);
+            return View(employees);
         }
 
-        // POST: Users/Delete/5
+        // POST: Employees/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.UsersModel == null)
+            if (_context.Employees == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.UsersModel'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Employees'  is null.");
             }
-            var usersModel = await _context.UsersModel.FindAsync(id);
-            if (usersModel != null)
+            var employees = await _context.Employees.FindAsync(id);
+            if (employees != null)
             {
-                _context.UsersModel.Remove(usersModel);
+                _context.Employees.Remove(employees);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UsersModelExists(int id)
+        private bool EmployeesExists(int id)
         {
-            return (_context.UsersModel?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Employees?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

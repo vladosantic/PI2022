@@ -1,6 +1,6 @@
 ﻿namespace PI2022.Models
 {
-    public class UsersModel
+    public class Employees
     {
         public int Id { get; set; }
         public string Ime { get; set; }
