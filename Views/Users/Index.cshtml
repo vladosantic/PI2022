@@ -1,0 +1,44 @@
+﻿@model IEnumerable<PI2022.Models.Users>
+
+@{
+    ViewData["Title"] = "Korisnici";
+}
+
+<h1>Korisnici</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Korisničko ime
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Broj telefona
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                <a>Uredi</a> |
+                <a>Detalji</a> |
+                <a>Ukloni</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
