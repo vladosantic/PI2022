@@ -17,7 +17,12 @@
             <th>
                 Broj telefona
             </th>
-            <th></th>
+            <th>
+                Uloga
+            </th>
+            <th>
+                Opcije
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -33,9 +38,10 @@
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>
             <td>
-                <a>Uredi</a> |
-                <a>Detalji</a> |
-                <a>Ukloni</a>
+                @string.Join(", ", item.Roles.ToList())
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-action="Manage" asp-route-userId="@item.UserId">Uredi uloge</a>
             </td>
         </tr>
 }

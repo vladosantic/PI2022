@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations;
 using PI2022.Models;
 
 namespace PI2022.Data
@@ -11,6 +13,5 @@ namespace PI2022.Data
         {
         }
         public DbSet<PI2022.Models.Employees>? Employees { get; set; }
-
     }
 }

@@ -23,6 +23,27 @@ namespace PI2022.Data.Migrations
                     table.PrimaryKey("PK_AspNetRoles", x => x.Id);
                 });
 
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "Name", "NormalizedName" },
+                values: new[] { "1", "SuperAdmin", "SUPERADMIN" }
+                );
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "Name", "NormalizedName" },
+                values: new[] { "2", "Admin", "ADMIN" }
+                );
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "Name", "NormalizedName" },
+                values: new[] { "3", "Moderator", "MODERATOR" }
+                );
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "Name", "NormalizedName" },
+                values: new[] { "4", "Basic", "BASIC" }
+                );
+
             migrationBuilder.CreateTable(
                 name: "AspNetUsers",
                 columns: table => new
@@ -47,6 +68,11 @@ namespace PI2022.Data.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                 });
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "UserName", "PasswordHash", "AccessFailedCount", "EmailConfirmed", "PhoneNumberConfirmed", "TwoFactorEnabled", "LockoutEnabled"},
+                values: new object[] { "1", "superadmin", "0", "0", true, true, false, false}
+                );
 
             migrationBuilder.CreateTable(
                 name: "Employees",
@@ -152,6 +178,21 @@ namespace PI2022.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "UserId", "RoleId" },
+                values: new[] { "1", "1" }
+                );
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "UserId", "RoleId" },
+                values: new[] { "1", "2" }
+                );
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "UserId", "RoleId" },
+                values: new[] { "1", "3" }
+                );
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserTokens",
