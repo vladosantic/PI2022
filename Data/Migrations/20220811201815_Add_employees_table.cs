@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -68,10 +69,12 @@ namespace PI2022.Data.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                 });
+            var hasher = new PasswordHasher<IdentityUser>();
+            var superadmin = new IdentityUser();
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "UserName", "PasswordHash", "AccessFailedCount", "EmailConfirmed", "PhoneNumberConfirmed", "TwoFactorEnabled", "LockoutEnabled"},
-                values: new object[] { "1", "superadmin", "0", "0", true, true, false, false}
+                columns: new[] { "Id", "UserName","NormalizedUserName", "Email", "NormalizedEmail", "PasswordHash", "AccessFailedCount", "EmailConfirmed", "PhoneNumberConfirmed", "TwoFactorEnabled", "LockoutEnabled", "SecurityStamp", "ConcurrencyStamp"},
+                values: new object[] { "1", "superadmin@fsre.ba", "SUPERADMIN@FSRE.BA", "superadmin@fsre.ba", "SUPERADMIN@FSRE.BA", hasher.HashPassword(superadmin, "Password123@") ,0 , true, true, false, false, "TestStamp", "TestStamp"}
                 );
 
             migrationBuilder.CreateTable(
@@ -192,6 +195,11 @@ namespace PI2022.Data.Migrations
                 table: "AspNetUserRoles",
                 columns: new[] { "UserId", "RoleId" },
                 values: new[] { "1", "3" }
+                );
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "UserId", "RoleId" },
+                values: new[] { "1", "4" }
                 );
 
             migrationBuilder.CreateTable(

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<PI2022.Models.Offers>
+
+@{
+    ViewData["Title"] = "Ponude";
+}
+
+<h1>Ponude poslova</h1>
+
+<button class="btn btn-primary">
+    <a asp-action="Create" style="color:white">Dodaj novu ponudu</a>
+</button>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Naziv
+            </th>
+            <th>
+                Opis posla
+            </th>
+            <th>
+                Broj osoba
+            </th>
+            <th>
+                Broj sati
+            </th>
+            <th>
+                Cijena po satu
+            </th>
+            <th>
+                Potrebna oprema
+            </th>
+            <th>
+                Početak radova
+            </th>
+            <th>
+                Završetak radova
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpisPosla)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrojOsoba)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrojSati)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CijenaSata) KM/h
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PotrebnaOprema)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PocetakRadova)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZavrsetakRadova)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalji</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Obriši</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
