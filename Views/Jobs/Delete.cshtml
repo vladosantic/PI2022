@@ -1,0 +1,77 @@
+﻿@model PI2022.Models.Jobs
+
+@{
+    ViewData["Title"] = "Brisanje posla";
+}
+
+<h3>Jeste li sigurni da želite obrisati ovaj posao?</h3>
+<div>
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Naziv
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Naziv)
+        </dd>
+        <dt class = "col-sm-2">
+            Opis posla
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OpisPosla)
+        </dd>
+        <dt class = "col-sm-2">
+            Broj osoba
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BrojOsoba)
+        </dd>
+        <dt class = "col-sm-2">
+            Broj sati
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BrojSati)
+        </dd>
+        <dt class = "col-sm-2">
+            Cijena sata
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CijenaSata)
+        </dd>
+        <dt class = "col-sm-2">
+            Potrebna oprema
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PotrebnaOprema)
+        </dd>
+        <dt class = "col-sm-2">
+            Početak radova
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PocetakRadova)
+        </dd>
+        <dt class = "col-sm-2">
+            Završetak radova
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ZavrsetakRadova)
+        </dd>
+        <dt class = "col-sm-2">
+            Zaposlenici
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Zaposlenici)
+        </dd>
+        <dt class = "col-sm-2">
+            Trošak
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.Raw(Model.CijenaSata * Model.BrojOsoba * Model.BrojSati) KM
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Brisanje" class="btn btn-danger" /> |
+        <a asp-action="Index">Natrag na popis</a>
+    </form>
+</div>

@@ -1,14 +1,14 @@
-﻿@model IEnumerable<PI2022.Models.Offers>
+﻿@model IEnumerable<PI2022.Models.Jobs>
 
 @{
-    ViewData["Title"] = "Ponude";
+    ViewData["Title"] = "Poslovi";
 }
 
-<h1>Ponude poslova</h1>
-
-<button class="btn btn-primary">
-    <a asp-action="Create" style="color:white">Dodaj novu ponudu</a>
-</button>
+<h1>Poslovi</h1>
+<hr />
+<p>
+    <a class="btn btn-primary" asp-action="Create">Dodaj novi posao</a>
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -25,7 +25,7 @@
                 Broj sati
             </th>
             <th>
-                Cijena po satu
+                Cijena sata
             </th>
             <th>
                 Potrebna oprema
@@ -36,7 +36,12 @@
             <th>
                 Završetak radova
             </th>
-            <th></th>
+            <th>
+                Zaposlenici
+            </th>
+            <th>
+                Trošak
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -56,7 +61,7 @@
                 @Html.DisplayFor(modelItem => item.BrojSati)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CijenaSata) KM/h
+                @Html.DisplayFor(modelItem => item.CijenaSata)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PotrebnaOprema)
@@ -68,12 +73,15 @@
                 @Html.DisplayFor(modelItem => item.ZavrsetakRadova)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalji</a>
+                @Html.DisplayFor(modelItem => item.Zaposlenici)
             </td>
             <td>
-                <a class="btn btn-primary" asp-controller="Jobs" asp-action="Create" asp-route-Id="@item.Id">Prihvati posao</a>
-                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Obriši</a>
+                @Html.Raw(item.CijenaSata * item.BrojOsoba * item.BrojSati) KM
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalji</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Obriši</a>
             </td>
         </tr>
 }

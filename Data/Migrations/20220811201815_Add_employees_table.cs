@@ -89,12 +89,13 @@ namespace PI2022.Data.Migrations
                     Telefon = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Pozicija = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Certifikati = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Certifikati = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Status = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Employees", x => x.Id);
-                });
+                }); ;
 
             migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",

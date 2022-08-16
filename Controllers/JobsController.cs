@@ -10,87 +10,87 @@ using PI2022.Models;
 
 namespace PI2022
 {
-    public class EmployeesController : Controller
+    public class JobsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public EmployeesController(ApplicationDbContext context)
+        public JobsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Employees
+        // GET: Jobs
         public async Task<IActionResult> Index()
         {
-              return _context.Employees != null ? 
-                          View(await _context.Employees.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Employees'  is null.");
+              return _context.Jobs != null ? 
+                          View(await _context.Jobs.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.Jobs'  is null.");
         }
 
-        // GET: Employees/Details/5
+        // GET: Jobs/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Employees == null)
+            if (id == null || _context.Jobs == null)
             {
                 return NotFound();
             }
 
-            var employees = await _context.Employees
+            var jobs = await _context.Jobs
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (employees == null)
+            if (jobs == null)
             {
                 return NotFound();
             }
 
-            return View(employees);
+            return View(jobs);
         }
 
-        // GET: Employees/Create
+        // GET: Jobs/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Employees/Create
+        // POST: Jobs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Ime,Prezime,Adresa,Telefon,Email,Pozicija,Certifikati,Status")] Employees employees)
+        public async Task<IActionResult> Create([Bind("Id,Naziv,OpisPosla,BrojOsoba,BrojSati,CijenaSata,PotrebnaOprema,PocetakRadova,ZavrsetakRadova,Zaposlenici,Trosak")] Jobs jobs)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(employees);
+                _context.Add(jobs);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(employees);
+            return View(jobs);
         }
 
-        // GET: Employees/Edit/5
+        // GET: Jobs/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Employees == null)
+            if (id == null || _context.Jobs == null)
             {
                 return NotFound();
             }
 
-            var employees = await _context.Employees.FindAsync(id);
-            if (employees == null)
+            var jobs = await _context.Jobs.FindAsync(id);
+            if (jobs == null)
             {
                 return NotFound();
             }
-            return View(employees);
+            return View(jobs);
         }
 
-        // POST: Employees/Edit/5
+        // POST: Jobs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Ime,Prezime,Adresa,Telefon,Email,Pozicija,Certifikati,Status")] Employees employees)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Naziv,OpisPosla,BrojOsoba,BrojSati,CijenaSata,PotrebnaOprema,PocetakRadova,ZavrsetakRadova,Zaposlenici,Trosak")] Jobs jobs)
         {
-            if (id != employees.Id)
+            if (id != jobs.Id)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace PI2022
             {
                 try
                 {
-                    _context.Update(employees);
+                    _context.Update(jobs);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EmployeesExists(employees.Id))
+                    if (!JobsExists(jobs.Id))
                     {
                         return NotFound();
                     }
@@ -115,49 +115,49 @@ namespace PI2022
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(employees);
+            return View(jobs);
         }
 
-        // GET: Employees/Delete/5
+        // GET: Jobs/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Employees == null)
+            if (id == null || _context.Jobs == null)
             {
                 return NotFound();
             }
 
-            var employees = await _context.Employees
+            var jobs = await _context.Jobs
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (employees == null)
+            if (jobs == null)
             {
                 return NotFound();
             }
 
-            return View(employees);
+            return View(jobs);
         }
 
-        // POST: Employees/Delete/5
+        // POST: Jobs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Employees == null)
+            if (_context.Jobs == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Employees'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Jobs'  is null.");
             }
-            var employees = await _context.Employees.FindAsync(id);
-            if (employees != null)
+            var jobs = await _context.Jobs.FindAsync(id);
+            if (jobs != null)
             {
-                _context.Employees.Remove(employees);
+                _context.Jobs.Remove(jobs);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EmployeesExists(int id)
+        private bool JobsExists(int id)
         {
-          return (_context.Employees?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Jobs?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

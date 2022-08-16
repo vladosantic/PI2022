@@ -10,5 +10,6 @@
         public string Email { get; set; }
         public string Pozicija { get; set; }
         public string Certifikati { get; set; }
+        public bool Status { get; set; }
     }
 }

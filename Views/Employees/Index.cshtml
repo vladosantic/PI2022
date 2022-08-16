@@ -33,6 +33,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Certifikati)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -60,6 +63,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Certifikati)
             </td>
+            @if(item.Status == true)
+                {
+                    <td>Slobodan</td>
+                }
+                else
+                {
+                    <td>Zauzet</td>    
+            }
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Detalji</a> |
