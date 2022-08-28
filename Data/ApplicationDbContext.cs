@@ -16,5 +16,6 @@ namespace PI2022.Data
         public DbSet<PI2022.Models.Equipment>? Equipment { get; set; }
         public DbSet<PI2022.Models.Offers>? Offers { get; set; }
         public DbSet<PI2022.Models.Jobs>? Jobs { get; set; }
+        public DbSet<PI2022.Models.Schedule>? Schedule { get; set; }
     }
 }

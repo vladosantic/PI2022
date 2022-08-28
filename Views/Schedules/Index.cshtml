@@ -1,0 +1,59 @@
+﻿@model IEnumerable<PI2022.Models.Schedule>
+
+@{
+    ViewData["Title"] = "Raspored";
+}
+
+<h1>Raspored</h1>
+
+<button class="btn btn-primary">
+    <a asp-action="Create" style="color:white">Dodaj</a>
+</button>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Zaposlenik
+            </th>
+            <th>
+                Opis posla
+            </th>
+            <th>
+                Početak rada
+            </th>
+            <th>
+                Završetak rada
+            </th>
+            <th>
+                Broj sati
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zaposlenik)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpisPosla)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PocetakRada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZavrsetakRada)
+            </td>
+            <td>
+                @Html.Raw(Math.Round(item.ZavrsetakRada.Subtract(item.PocetakRada).TotalHours, 1))
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalji</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Obriši</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

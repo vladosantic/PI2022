@@ -1,0 +1,47 @@
+﻿@model PI2022.Models.Schedule
+
+@{
+    ViewData["Title"] = "Uređivanje rasporeda";
+}
+
+<h1>Uredi</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Zaposlenik" class="control-label">Zaposlenik</label>
+                <input asp-for="Zaposlenik" class="form-control" readonly/>
+                <span asp-validation-for="Zaposlenik" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OpisPosla" class="control-label">Opis posla</label>
+                <input asp-for="OpisPosla" class="form-control" />
+                <span asp-validation-for="OpisPosla" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PocetakRada" class="control-label">Početak rada</label>
+                <input asp-for="PocetakRada" class="form-control" />
+                <span asp-validation-for="PocetakRada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ZavrsetakRada" class="control-label">Završetak rada</label>
+                <input asp-for="ZavrsetakRada" class="form-control" />
+                <span asp-validation-for="ZavrsetakRada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Uredi" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Natrag na popis</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
