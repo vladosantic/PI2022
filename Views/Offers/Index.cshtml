@@ -72,7 +72,7 @@
                 <a asp-action="Details" asp-route-id="@item.Id">Detalji</a>
             </td>
             <td>
-                <a class="btn btn-primary" asp-controller="Jobs" asp-action="Create" asp-route-Id="@item.Id">Prihvati posao</a>
+                <a class="btn btn-primary" asp-controller="Jobs" asp-action="CreateFromOffer" asp-route-Id="@item.Id">Prihvati posao</a>
                 <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Obriši</a>
             </td>
         </tr>

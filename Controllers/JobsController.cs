@@ -22,9 +22,9 @@ namespace PI2022
         // GET: Jobs
         public async Task<IActionResult> Index()
         {
-              return _context.Jobs != null ? 
-                          View(await _context.Jobs.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Jobs'  is null.");
+            return _context.Jobs != null ?
+                        View(await _context.Jobs.ToListAsync()) :
+                        Problem("Entity set 'ApplicationDbContext.Jobs'  is null.");
         }
 
         // GET: Jobs/Details/5
@@ -51,12 +51,35 @@ namespace PI2022
             return View();
         }
 
+        public async Task<IActionResult> CreateFromOffer(int Id)
+        {
+            var offer = await _context.Offers.FindAsync(Id);
+            if (offer == null)
+            {
+                return View("Error");
+            }
+            var model = new Jobs
+            {
+                Naziv = offer.Naziv,
+                OpisPosla = offer.OpisPosla,
+                BrojOsoba = offer.BrojOsoba,
+                BrojSati = offer.BrojSati,
+                CijenaSata = offer.CijenaSata,
+                PotrebnaOprema = offer.PotrebnaOprema,
+                PocetakRadova = offer.PocetakRadova,
+                ZavrsetakRadova = offer.ZavrsetakRadova,
+                Trosak = offer.BrojOsoba * offer.BrojSati * offer.CijenaSata
+            };
+            await _context.SaveChangesAsync();
+            return View(model);
+        }
+
         // POST: Jobs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Naziv,OpisPosla,BrojOsoba,BrojSati,CijenaSata,PotrebnaOprema,PocetakRadova,ZavrsetakRadova,Zaposlenici,Trosak")] Jobs jobs)
+        public async Task<IActionResult> Create([Bind("Id,Naziv,OpisPosla,BrojOsoba,BrojSati,CijenaSata,PotrebnaOprema,PotrebniCertifikati,Adresa,PocetakRadova,,Zaposlenici,Trosak")] Jobs jobs)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +111,7 @@ namespace PI2022
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Naziv,OpisPosla,BrojOsoba,BrojSati,CijenaSata,PotrebnaOprema,PocetakRadova,ZavrsetakRadova,Zaposlenici,Trosak")] Jobs jobs)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Naziv,OpisPosla,BrojOsoba,BrojSati,CijenaSata,PotrebnaOprema,PotrebniCertifikati,Adresa,PocetakRadova,,Zaposlenici,Trosak")] Jobs jobs)
         {
             if (id != jobs.Id)
             {
@@ -150,14 +173,14 @@ namespace PI2022
             {
                 _context.Jobs.Remove(jobs);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool JobsExists(int id)
         {
-          return (_context.Jobs?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Jobs?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
