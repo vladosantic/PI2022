@@ -56,7 +56,7 @@ namespace PI2022.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Naziv,Kolicina,DatumKupnje,Opis")] Equipment equipment)
+        public async Task<IActionResult> Create([Bind("Id,Naziv,Kolicina,NabavnaCijena,Proizvodac,Dobavljac,DatumKupnje,PotrebanServis,Potrosnja,Istrosenost")] Equipment equipment)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace PI2022.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Naziv,Kolicina,DatumKupnje,Opis")] Equipment equipment)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Naziv,Kolicina,NabavnaCijena,Proizvodac,Dobavljac,DatumKupnje,PotrebanServis,Potrosnja,Istrosenost")] Equipment equipment)
         {
             if (id != equipment.Id)
             {

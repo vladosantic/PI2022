@@ -284,14 +284,30 @@ namespace PI2022.Data.Migrations
                     b.Property<DateTime>("DatumKupnje")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Dobavljac")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Istrosenost")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Kolicina")
                         .HasColumnType("int");
+
+                    b.Property<double>("NabavnaCijena")
+                        .HasColumnType("float");
 
                     b.Property<string>("Naziv")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Opis")
+                    b.Property<bool>("PotrebanServis")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Potrosnja")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Proizvodac")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -332,17 +348,18 @@ namespace PI2022.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Trosak")
+                    b.Property<int?>("ScheduleId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Zaposlenici")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Trosak")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("ZavrsetakRadova")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ScheduleId");
 
                     b.ToTable("Jobs");
                 });
@@ -404,6 +421,10 @@ namespace PI2022.Data.Migrations
 
                     b.Property<DateTime>("PocetakRada")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Posao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Zaposlenik")
                         .IsRequired()
@@ -475,9 +496,18 @@ namespace PI2022.Data.Migrations
                         .HasForeignKey("ScheduleId");
                 });
 
+            modelBuilder.Entity("PI2022.Models.Jobs", b =>
+                {
+                    b.HasOne("PI2022.Models.Schedule", null)
+                        .WithMany("Jobs")
+                        .HasForeignKey("ScheduleId");
+                });
+
             modelBuilder.Entity("PI2022.Models.Schedule", b =>
                 {
                     b.Navigation("Employees");
+
+                    b.Navigation("Jobs");
                 });
 #pragma warning restore 612, 618
         }

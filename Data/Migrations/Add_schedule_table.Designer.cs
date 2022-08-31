@@ -13,7 +13,7 @@ namespace PI2022.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20220828191947_TEST")]
-    partial class TEST
+    partial class Add_schedule_table
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

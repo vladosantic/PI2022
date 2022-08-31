@@ -5,7 +5,6 @@
 }
 
 <h1>Poslovi</h1>
-<hr />
 <p>
     <a class="btn btn-primary" asp-action="Create">Dodaj novi posao</a>
 </p>
@@ -35,9 +34,6 @@
             </th>
             <th>
                 Završetak radova
-            </th>
-            <th>
-                Zaposlenici
             </th>
             <th>
                 Trošak
@@ -71,9 +67,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ZavrsetakRadova)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Zaposlenici)
             </td>
             <td>
                 @Html.Raw(item.CijenaSata * item.BrojOsoba * item.BrojSati) KM

@@ -50,7 +50,8 @@ namespace PI2022
         {
             var model = new Schedule
             {
-                Employees = _context.Employees.ToList()
+                Employees = _context.Employees.ToList(),
+                Jobs = _context.Jobs.ToList()
             };
             return View(model);
         }
@@ -60,7 +61,7 @@ namespace PI2022
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Zaposlenik,OpisPosla,PocetakRada,ZavrsetakRada,BrojSati")] Schedule schedule)
+        public async Task<IActionResult> Create([Bind("Id,Zaposlenik,Posao,OpisPosla,PocetakRada,ZavrsetakRada,BrojSati")] Schedule schedule)
         {
             if (ModelState.IsValid)
             {
@@ -81,6 +82,7 @@ namespace PI2022
 
             var schedule = await _context.Schedule.FindAsync(id);
             schedule.Employees = _context.Employees.ToList();
+            schedule.Jobs = _context.Jobs.ToList();
             if (schedule == null)
             {
                 return NotFound();
@@ -93,7 +95,7 @@ namespace PI2022
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Zaposlenik,OpisPosla,PocetakRada,ZavrsetakRada,BrojSati")] Schedule schedule)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Zaposlenik,Posao,OpisPosla,PocetakRada,ZavrsetakRada,BrojSati")] Schedule schedule)
         {
             if (id != schedule.Id)
             {

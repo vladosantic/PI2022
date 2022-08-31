@@ -11,7 +11,6 @@
         public string PotrebnaOprema { get; set; }
         public DateTime PocetakRadova { get; set; }
         public DateTime ZavrsetakRadova { get; set; }
-        public string Zaposlenici { get; set; }
         public int Trosak { get; set; }
     }
 }

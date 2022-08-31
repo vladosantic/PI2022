@@ -22,7 +22,19 @@
                 Datum kupnje
             </th>
             <th>
-                Opis
+                Nabavna cijena
+            </th>
+            <th>
+                Proizvođač
+            </th>
+            <th>
+                Dobavljač
+            </th>
+            <th>
+                Potrošenost
+            </th>
+            <th>
+                Potreban servis
             </th>
             <th></th>
         </tr>
@@ -40,8 +52,30 @@
                 @Html.DisplayFor(modelItem => item.DatumKupnje)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Opis)
+                @Html.DisplayFor(modelItem => item.NabavnaCijena)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Proizvodac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dobavljac)
+            </td>
+            @if(item.Potrosnja >= 100)
+            {
+                <td style="color:darkred">Oprema uništena</td>
+            }
+            else
+            {
+                <td>@Html.DisplayFor(modelItem => item.Potrosnja) %</td>
+            }
+            @if(item.PotrebanServis == true)
+            {
+                <td style="color:darkred">Da</td>
+            }
+            else
+            {
+                <td style="color:darkgreen">Ne</td>    
+            }
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Detalji</a> |

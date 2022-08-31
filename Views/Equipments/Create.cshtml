@@ -26,9 +26,30 @@
                 <span asp-validation-for="DatumKupnje" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Opis" class="control-label">Opis</label>
-                <input asp-for="Opis" class="form-control" />
-                <span asp-validation-for="Opis" class="text-danger"></span>
+                <label asp-for="NabavnaCijena" class="control-label">Nabavna cijena</label>
+                <input asp-for="NabavnaCijena" class="form-control" />
+                <span asp-validation-for="NabavnaCijena" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Proizvodac" class="control-label">Proizvođač</label>
+                <input asp-for="Proizvodac" class="form-control" />
+                <span asp-validation-for="Proizvodac" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dobavljac" class="control-label">Dobavljač</label>
+                <input asp-for="Dobavljac" class="form-control" />
+                <span asp-validation-for="Dobavljac" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Potrosnja" class="control-label">Potrošnja</label>
+                <input asp-for="Potrosnja" class="form-control" />
+                <span asp-validation-for="Potrosnja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+            <label class="form-check-label">
+                <input class="form-check-input" asp-for="PotrebanServis" />
+                <label>Označite ako je potreban servis,<br />inače ostaviti prazno.</label>
+            </label>
             </div>
             <div class="form-group">
                 <input type="submit" value="Dodaj opremu" class="btn btn-primary" />

@@ -17,6 +17,11 @@
                 <span asp-validation-for="Zaposlenik" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Posao" class="control-label">Posao</label>
+                <input asp-for="Posao" class="form-control" readonly/>
+                <span asp-validation-for="Posao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="OpisPosla" class="control-label">Opis posla</label>
                 <input asp-for="OpisPosla" class="form-control" />
                 <span asp-validation-for="OpisPosla" class="text-danger"></span>

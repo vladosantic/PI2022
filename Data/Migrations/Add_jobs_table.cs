@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PI2022.Data.Migrations
 {
-    public partial class Add_equipment_and_offers : Migration
+    public partial class Add_jobs_table : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Offers",
+                name: "Jobs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -22,36 +22,19 @@ namespace PI2022.Data.Migrations
                     CijenaSata = table.Column<int>(type: "int", nullable: false),
                     PotrebnaOprema = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PocetakRadova = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ZavrsetakRadova = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    ZavrsetakRadova = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Trosak = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Offers", x => x.Id);
-                });
-            migrationBuilder.CreateTable(
-                name: "Equipment",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Naziv = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Kolicina = table.Column<int>(type: "int", nullable: false),
-                    DatumKupnje = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Opis = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Equipment", x => x.Id);
+                    table.PrimaryKey("PK_Jobs", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Offers");
-            migrationBuilder.DropTable(
-                name: "Equipment");
+                name: "Jobs");
         }
-
     }
 }

@@ -5,10 +5,16 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PI2022.Data.Migrations
 {
-    public partial class TEST : Migration
+    public partial class Add_schedule_table : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AddColumn<int>(
+                name: "ScheduleId",
+                table: "Jobs",
+                type: "int",
+                nullable: true);
+
             migrationBuilder.AddColumn<int>(
                 name: "ScheduleId",
                 table: "Employees",
@@ -22,6 +28,7 @@ namespace PI2022.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Zaposlenik = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Posao = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     OpisPosla = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PocetakRada = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ZavrsetakRada = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -31,6 +38,11 @@ namespace PI2022.Data.Migrations
                 {
                     table.PrimaryKey("PK_Schedule", x => x.Id);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Jobs_ScheduleId",
+                table: "Jobs",
+                column: "ScheduleId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Employees_ScheduleId",
@@ -43,6 +55,13 @@ namespace PI2022.Data.Migrations
                 column: "ScheduleId",
                 principalTable: "Schedule",
                 principalColumn: "Id");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Jobs_Schedule_ScheduleId",
+                table: "Jobs",
+                column: "ScheduleId",
+                principalTable: "Schedule",
+                principalColumn: "Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -51,15 +70,19 @@ namespace PI2022.Data.Migrations
                 name: "FK_Employees_Schedule_ScheduleId",
                 table: "Employees");
 
+            migrationBuilder.DropForeignKey(
+                name: "FK_Jobs_Schedule_ScheduleId",
+                table: "Jobs");
+
             migrationBuilder.DropTable(
                 name: "Schedule");
 
             migrationBuilder.DropIndex(
-                name: "IX_Employees_ScheduleId",
-                table: "Employees");
+                name: "IX_Jobs_ScheduleId",
+                table: "Jobs");
 
-            migrationBuilder.DropColumn(
-                name: "ScheduleId",
+            migrationBuilder.DropIndex(
+                name: "IX_Employees_ScheduleId",
                 table: "Employees");
         }
     }
