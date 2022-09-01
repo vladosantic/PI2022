@@ -47,7 +47,7 @@
             @Html.DisplayFor(model => model.Email)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ZaposlenOd)
+            Zaposlen od:
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ZaposlenOd)
@@ -64,12 +64,15 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Certifikati)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Status)
+        <dt class= "col-sm-2">
+            Plaća
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Placa)
         </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
         @if(Model.Status == true)
                 {
                     <dd class = "col-sm-2">Slobodan</dd>
@@ -78,9 +81,6 @@
                 {
                     <dd class = "col-sm-2">Zauzet</dd>
             }
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Placa)
-        </dt>
     </dl>
     
     <form asp-action="Delete">

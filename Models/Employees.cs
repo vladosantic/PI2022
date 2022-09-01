@@ -12,8 +12,7 @@
         public DateTime ZaposlenOd { get; set; }
         public string Pozicija { get; set; }
         public string Certifikati { get; set; }
-        public double Placa { get; set; }
+        public Double Placa { get; set; }
         public bool Status { get; set; }
-        
     }
 }

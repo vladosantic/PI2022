@@ -31,7 +31,7 @@
                 @Html.DisplayNameFor(model => model.Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ZaposlenOd)
+                Zaposlen od:
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Pozicija)
@@ -40,12 +40,12 @@
                 @Html.DisplayNameFor(model => model.Certifikati)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Placa)
                 Plaća
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Status)
             </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -70,10 +70,10 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ZaposlenOd)
+                @Html.Raw(DateOnly.FromDateTime(item.ZaposlenOd))
             </td>
             <td>
-                    @Html.DisplayFor(modelItem => item.Pozicija)
+                @Html.DisplayFor(modelItem => item.Pozicija)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Certifikati)

@@ -85,11 +85,14 @@ namespace PI2022.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Ime = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Prezime = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Spol = table.Column<char>(type: "char", nullable: false),
                     Adresa = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Telefon = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ZaposlenOd = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Pozicija = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Certifikati = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Placa = table.Column<Double>(type: "float", nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>

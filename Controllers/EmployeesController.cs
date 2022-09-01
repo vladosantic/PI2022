@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -57,7 +56,7 @@ namespace PI2022
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Ime,Prezime,Spol,Adresa,Telefon,Email,ZaposlenOd,Pozicija,Certifikati,Status,Placa")] Employees employees)
+        public async Task<IActionResult> Create([Bind("Id,Ime,Prezime,Spol,Adresa,Telefon,Email,ZaposlenOd,Pozicija,Certifikati,Placa,Status")] Employees employees)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +88,7 @@ namespace PI2022
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Ime,Prezime,Spol,Adresa,Telefon,Email,ZaposlenOd,Pozicija,Certifikati,Status,Placa")] Employees employees)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Ime,Prezime,Spol,Adresa,Telefon,Email,ZaposlenOd,Pozicija,Certifikati,Placa,Status")] Employees employees)
         {
             if (id != employees.Id)
             {

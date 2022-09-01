@@ -46,9 +46,8 @@
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ZaposlenOd" class="control-label"></label>
-                <input asp-for="ZaposlenOd" class="form-control" data-val="true"
-                       name="ZaposlenOd" type="date" value="1/1/2000" />
+                <label asp-for="ZaposlenOd" class="control-label">Zaposlen od:</label>
+                <input asp-for="ZaposlenOd" class="form-control" type="date"/>
                 <span asp-validation-for="ZaposlenOd" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -62,8 +61,8 @@
                 <span asp-validation-for="Certifikati" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Placa" class="form-label"></label>
-                <input asp-for="Placa" class="form-control" type="number" step="0.01" name="Placa">
+                <label asp-for="Placa" class="form-label">Plaća</label>
+                <input asp-for="Placa" class="form-control">
                 <span asp-validation-for="Placa" class="text-danger"></span>
             </div>
             <div class="form-group">
