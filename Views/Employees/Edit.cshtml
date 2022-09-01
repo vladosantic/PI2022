@@ -22,6 +22,15 @@
                 <span asp-validation-for="Prezime" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Spol" class="control-label"></label>
+                <select asp-for="Spol" class="form-control" name="Spol">
+                    <option>Odaberite spol</option>
+                    <option>M</option>
+                    <option>Ž</option>
+                    <span asp-validation-for="Spol" class="text-danger"></span>
+                </select>
+            </div>
+            <div class="form-group">
                 <label asp-for="Adresa" class="control-label"></label>
                 <input asp-for="Adresa" class="form-control" />
                 <span asp-validation-for="Adresa" class="text-danger"></span>
@@ -37,6 +46,12 @@
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="ZaposlenOd" class="control-label"></label>
+                <input asp-for="ZaposlenOd" class="form-control" data-val="true"
+                       name="ZaposlenOd" type="date" value="1/1/2000" />
+                <span asp-validation-for="ZaposlenOd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Pozicija" class="control-label"></label>
                 <input asp-for="Pozicija" class="form-control" />
                 <span asp-validation-for="Pozicija" class="text-danger"></span>
@@ -45,6 +60,11 @@
                 <label asp-for="Certifikati" class="control-label"></label>
                 <input asp-for="Certifikati" class="form-control" />
                 <span asp-validation-for="Certifikati" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Placa" class="form-label"></label>
+                <input asp-for="Placa" class="form-control" type="number" step="0.01" name="Placa">
+                <span asp-validation-for="Placa" class="text-danger"></span>
             </div>
             <div class="form-group">
             <label class="form-check-label">

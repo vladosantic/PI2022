@@ -19,6 +19,9 @@
                 @Html.DisplayNameFor(model => model.Prezime)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Spol)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Adresa)
             </th>
             <th>
@@ -28,15 +31,21 @@
                 @Html.DisplayNameFor(model => model.Email)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.ZaposlenOd)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Pozicija)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Certifikati)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Placa)
+                Plaća
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Status)
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -49,6 +58,9 @@
                 @Html.DisplayFor(modelItem => item.Prezime)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Spol)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Adresa)
             </td>
             <td>
@@ -58,10 +70,16 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Pozicija)
+                @Html.DisplayFor(modelItem => item.ZaposlenOd)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Pozicija)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Certifikati)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Placa)
             </td>
             @if(item.Status == true)
                 {
