@@ -35,14 +35,13 @@ namespace PI2022.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Naziv = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Kategorija = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Kolicina = table.Column<int>(type: "int", nullable: false),
                     DatumKupnje = table.Column<DateTime>(type: "datetime2", nullable: false),
                     NabavnaCijena = table.Column<Double>(type: "float", nullable: false),
+                    CijenaDostave = table.Column<Double>(type: "float", nullable: false),
                     Proizvodac = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Dobavljac = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Potrosnja = table.Column<int>(type: "int", nullable: false),
-                    Istrosenost = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PotrebanServis = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
