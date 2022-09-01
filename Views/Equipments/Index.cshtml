@@ -16,13 +16,7 @@
                 Naziv
             </th>
             <th>
-                Količina
-            </th>
-            <th>
-                Datum kupnje
-            </th>
-            <th>
-                Nabavna cijena
+                Kategorija
             </th>
             <th>
                 Proizvođač
@@ -31,28 +25,27 @@
                 Dobavljač
             </th>
             <th>
-                Potrošenost
+                Datum kupnje
             </th>
             <th>
-                Potreban servis
+                Količina
             </th>
-            <th></th>
+            <th>
+                Nabavna cijena
+            </th>
+            <th>
+                Cijena dostave
+            </th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+            <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Naziv)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Kolicina)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DatumKupnje)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NabavnaCijena)
+                @Html.DisplayFor(modelItem => item.Kategorija)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Proizvodac)
@@ -60,22 +53,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Dobavljac)
             </td>
-            @if(item.Potrosnja >= 100)
-            {
-                <td style="color:darkred">Oprema uništena</td>
-            }
-            else
-            {
-                <td>@Html.DisplayFor(modelItem => item.Potrosnja) %</td>
-            }
-            @if(item.PotrebanServis == true)
-            {
-                <td style="color:darkred">Da</td>
-            }
-            else
-            {
-                <td style="color:darkgreen">Ne</td>    
-            }
+            <td>
+                @Html.DisplayFor(modelItem => item.DatumKupnje)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kolicina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NabavnaCijena)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CijenaDostave)
+            </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Detalji</a> |
