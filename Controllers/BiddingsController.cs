@@ -10,101 +10,87 @@ using PI2022.Models;
 
 namespace PI2022.Controllers
 {
-    public class OffersController : Controller
+    public class BiddingsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public OffersController(ApplicationDbContext context)
+        public BiddingsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Offers
+        // GET: Biddings
         public async Task<IActionResult> Index()
         {
-            return _context.Offers != null ?
-                        View(await _context.Offers.ToListAsync()) :
-                        Problem("Entity set 'ApplicationDbContext.Offers'  is null.");
+              return _context.Bidding != null ? 
+                          View(await _context.Bidding.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.Bidding'  is null.");
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Index(string searchString)
-        {
-            var offers = from m in _context.Offers
-                            select m;
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                offers = offers.Where(s => s.Naziv!.Contains(searchString));
-            }
-
-            return View(await offers.ToListAsync());
-        }
-
-        // GET: Offers/Details/5
+        // GET: Biddings/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Offers == null)
+            if (id == null || _context.Bidding == null)
             {
                 return NotFound();
             }
 
-            var offers = await _context.Offers
+            var bidding = await _context.Bidding
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (offers == null)
+            if (bidding == null)
             {
                 return NotFound();
             }
 
-            return View(offers);
+            return View(bidding);
         }
 
-        // GET: Offers/Create
+        // GET: Biddings/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Offers/Create
+        // POST: Biddings/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Naziv,OpisPosla,BrojOsoba,BrojSati,CijenaSata,PotrebnaOprema,PocetakRadova,ZavrsetakRadova")] Offers offers)
+        public async Task<IActionResult> Create([Bind("Id,NazivNatječaja,OpisPosla,ProcijenjenaVrijednostPosla,TrajanjeNatjecaja,Objavljen,DobitnikNatječaja,ProlaznostNatječaja")] Bidding bidding)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(offers);
+                _context.Add(bidding);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(offers);
+            return View(bidding);
         }
 
-        // GET: Offers/Edit/5
+        // GET: Biddings/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Offers == null)
+            if (id == null || _context.Bidding == null)
             {
                 return NotFound();
             }
 
-            var offers = await _context.Offers.FindAsync(id);
-            if (offers == null)
+            var bidding = await _context.Bidding.FindAsync(id);
+            if (bidding == null)
             {
                 return NotFound();
             }
-            return View(offers);
+            return View(bidding);
         }
 
-        // POST: Offers/Edit/5
+        // POST: Biddings/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Naziv,OpisPosla,BrojOsoba,BrojSati,CijenaSata,PotrebnaOprema,PocetakRadova,ZavrsetakRadova")] Offers offers)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NazivNatječaja,OpisPosla,ProcijenjenaVrijednostPosla,TrajanjeNatjecaja,Objavljen,DobitnikNatječaja,ProlaznostNatječaja")] Bidding bidding)
         {
-            if (id != offers.Id)
+            if (id != bidding.Id)
             {
                 return NotFound();
             }
@@ -113,12 +99,12 @@ namespace PI2022.Controllers
             {
                 try
                 {
-                    _context.Update(offers);
+                    _context.Update(bidding);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!OffersExists(offers.Id))
+                    if (!BiddingExists(bidding.Id))
                     {
                         return NotFound();
                     }
@@ -129,49 +115,49 @@ namespace PI2022.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(offers);
+            return View(bidding);
         }
 
-        // GET: Offers/Delete/5
+        // GET: Biddings/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Offers == null)
+            if (id == null || _context.Bidding == null)
             {
                 return NotFound();
             }
 
-            var offers = await _context.Offers
+            var bidding = await _context.Bidding
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (offers == null)
+            if (bidding == null)
             {
                 return NotFound();
             }
 
-            return View(offers);
+            return View(bidding);
         }
 
-        // POST: Offers/Delete/5
+        // POST: Biddings/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Offers == null)
+            if (_context.Bidding == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Offers'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Bidding'  is null.");
             }
-            var offers = await _context.Offers.FindAsync(id);
-            if (offers != null)
+            var bidding = await _context.Bidding.FindAsync(id);
+            if (bidding != null)
             {
-                _context.Offers.Remove(offers);
+                _context.Bidding.Remove(bidding);
             }
-
+            
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool OffersExists(int id)
+        private bool BiddingExists(int id)
         {
-            return (_context.Offers?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Bidding?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

@@ -6,6 +6,13 @@
 
 <h1>Ponude poslova</h1>
 
+<form asp-controller="Offers" asp-action="Index" method="get">
+    <p>
+        <input type="text" name="SearchString" placeholder="Naziv ponude"/>
+        <input class="btn btn-primary" type="submit" value="Pretraži" />
+    </p>
+</form>
+
 <button class="btn btn-primary">
     <a asp-action="Create" style="color:white">Dodaj novu ponudu</a>
 </button>

@@ -5,6 +5,14 @@
 }
 
 <h1>Poslovi</h1>
+
+<form asp-controller="Jobs" asp-action="Index" method="get">
+    <p>
+        <input type="text" name="SearchString" placeholder="Naziv posla"/>
+        <input class="btn btn-primary" type="submit" value="Pretraži" />
+    </p>
+</form>
+
 <p>
     <a class="btn btn-primary" asp-action="Create">Dodaj novi posao</a>
 </p>

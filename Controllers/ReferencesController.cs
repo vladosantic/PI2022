@@ -10,101 +10,87 @@ using PI2022.Models;
 
 namespace PI2022.Controllers
 {
-    public class OffersController : Controller
+    public class ReferencesController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public OffersController(ApplicationDbContext context)
+        public ReferencesController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Offers
+        // GET: References
         public async Task<IActionResult> Index()
         {
-            return _context.Offers != null ?
-                        View(await _context.Offers.ToListAsync()) :
-                        Problem("Entity set 'ApplicationDbContext.Offers'  is null.");
+              return _context.References != null ? 
+                          View(await _context.References.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.References'  is null.");
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Index(string searchString)
-        {
-            var offers = from m in _context.Offers
-                            select m;
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                offers = offers.Where(s => s.Naziv!.Contains(searchString));
-            }
-
-            return View(await offers.ToListAsync());
-        }
-
-        // GET: Offers/Details/5
+        // GET: References/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Offers == null)
+            if (id == null || _context.References == null)
             {
                 return NotFound();
             }
 
-            var offers = await _context.Offers
+            var references = await _context.References
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (offers == null)
+            if (references == null)
             {
                 return NotFound();
             }
 
-            return View(offers);
+            return View(references);
         }
 
-        // GET: Offers/Create
+        // GET: References/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Offers/Create
+        // POST: References/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Naziv,OpisPosla,BrojOsoba,BrojSati,CijenaSata,PotrebnaOprema,PocetakRadova,ZavrsetakRadova")] Offers offers)
+        public async Task<IActionResult> Create([Bind("Id,Naziv,Kategorija,Opis,CijenaReferentneOpreme")] References references)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(offers);
+                _context.Add(references);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(offers);
+            return View(references);
         }
 
-        // GET: Offers/Edit/5
+        // GET: References/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Offers == null)
+            if (id == null || _context.References == null)
             {
                 return NotFound();
             }
 
-            var offers = await _context.Offers.FindAsync(id);
-            if (offers == null)
+            var references = await _context.References.FindAsync(id);
+            if (references == null)
             {
                 return NotFound();
             }
-            return View(offers);
+            return View(references);
         }
 
-        // POST: Offers/Edit/5
+        // POST: References/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Naziv,OpisPosla,BrojOsoba,BrojSati,CijenaSata,PotrebnaOprema,PocetakRadova,ZavrsetakRadova")] Offers offers)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Naziv,Kategorija,Opis,CijenaReferentneOpreme")] References references)
         {
-            if (id != offers.Id)
+            if (id != references.Id)
             {
                 return NotFound();
             }
@@ -113,12 +99,12 @@ namespace PI2022.Controllers
             {
                 try
                 {
-                    _context.Update(offers);
+                    _context.Update(references);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!OffersExists(offers.Id))
+                    if (!ReferencesExists(references.Id))
                     {
                         return NotFound();
                     }
@@ -129,49 +115,49 @@ namespace PI2022.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(offers);
+            return View(references);
         }
 
-        // GET: Offers/Delete/5
+        // GET: References/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Offers == null)
+            if (id == null || _context.References == null)
             {
                 return NotFound();
             }
 
-            var offers = await _context.Offers
+            var references = await _context.References
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (offers == null)
+            if (references == null)
             {
                 return NotFound();
             }
 
-            return View(offers);
+            return View(references);
         }
 
-        // POST: Offers/Delete/5
+        // POST: References/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Offers == null)
+            if (_context.References == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Offers'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.References'  is null.");
             }
-            var offers = await _context.Offers.FindAsync(id);
-            if (offers != null)
+            var references = await _context.References.FindAsync(id);
+            if (references != null)
             {
-                _context.Offers.Remove(offers);
+                _context.References.Remove(references);
             }
-
+            
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool OffersExists(int id)
+        private bool ReferencesExists(int id)
         {
-            return (_context.Offers?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.References?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

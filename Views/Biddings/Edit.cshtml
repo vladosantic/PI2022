@@ -1,0 +1,62 @@
+﻿@model PI2022.Models.Bidding
+
+@{
+    ViewData["Title"] = "Uredi natječaje";
+}
+
+<h1>Uredi natječaje</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="NazivNatječaja" class="control-label">Naziv natječaja</label>
+                <input asp-for="NazivNatječaja" class="form-control" />
+                <span asp-validation-for="NazivNatječaja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OpisPosla" class="control-label">Opis posla</label>
+                <input asp-for="OpisPosla" class="form-control" />
+                <span asp-validation-for="OpisPosla" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProcijenjenaVrijednostPosla" class="control-label">Procijenjena vrijednost posla</label>
+                <input asp-for="ProcijenjenaVrijednostPosla" class="form-control" />
+                <span asp-validation-for="ProcijenjenaVrijednostPosla" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrajanjeNatjecaja" class="control-label">Trajanje natječaja</label>
+                <input asp-for="TrajanjeNatjecaja" class="form-control" />
+                <span asp-validation-for="TrajanjeNatjecaja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Objavljen" class="control-label"></label>
+                <input asp-for="Objavljen" class="form-control" />
+                <span asp-validation-for="Objavljen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DobitnikNatječaja" class="control-label">Dobitnik natječaja</label>
+                <input asp-for="DobitnikNatječaja" class="form-control" />
+                <span asp-validation-for="DobitnikNatječaja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProlaznostNatječaja" class="control-label">Prolaznost natječaja</label>
+                <input asp-for="ProlaznostNatječaja" class="form-control" />
+                <span asp-validation-for="ProlaznostNatječaja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Natrag na popis</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

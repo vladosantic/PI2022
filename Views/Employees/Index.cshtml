@@ -6,6 +6,13 @@
 
 <h1>Zaposlenici</h1>
 
+<form asp-controller="Employees" asp-action="Index" method="get">
+    <p>
+        <input type="text" name="SearchString" placeholder="Ime zaposlenika"/>
+        <input class="btn btn-primary" type="submit" value="Pretraži" />
+    </p>
+</form>
+
 <button class="btn btn-primary">
     <a asp-action="Create" style="color:white">Dodaj novog zaposlenika</a>
 </button>

@@ -27,6 +27,20 @@ namespace PI2022
                         Problem("Entity set 'ApplicationDbContext.Jobs'  is null.");
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Index(string searchString)
+        {
+            var jobs = from m in _context.Jobs
+                            select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                jobs = jobs.Where(s => s.Naziv!.Contains(searchString));
+            }
+
+            return View(await jobs.ToListAsync());
+        }
+
         // GET: Jobs/Details/5
         public async Task<IActionResult> Details(int? id)
         {

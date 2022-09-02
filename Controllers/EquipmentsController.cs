@@ -27,6 +27,20 @@ namespace PI2022.Controllers
                         Problem("Entity set 'ApplicationDbContext.Equipment'  is null.");
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Index(string searchString)
+        {
+            var equipment = from m in _context.Equipment
+                            select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                equipment = equipment.Where(s => s.Naziv!.Contains(searchString));
+            }
+
+            return View(await equipment.ToListAsync());
+        }
+
         // GET: Equipments/Details/5
         public async Task<IActionResult> Details(int? id)
         {

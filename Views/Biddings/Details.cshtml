@@ -1,0 +1,58 @@
+﻿@model PI2022.Models.Bidding
+
+@{
+    ViewData["Title"] = "Detalji natječaja";
+}
+
+<h1>Detalji natječaja</h1>
+<hr/>
+<div>
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Naziv natječaja
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NazivNatječaja)
+        </dd>
+        <dt class = "col-sm-2">
+            Opis posla
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OpisPosla)
+        </dd>
+        <dt class = "col-sm-2">
+            Procijenjena vrijednost posla
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ProcijenjenaVrijednostPosla) KM
+        </dd>
+        <dt class = "col-sm-2">
+            Trajanje natječaja
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TrajanjeNatjecaja)
+        </dd>
+        <dt class = "col-sm-2">
+            Objavljen
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Objavljen)
+        </dd>
+        <dt class = "col-sm-2">
+            Dobitnik natječaja
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DobitnikNatječaja)
+        </dd>
+        <dt class = "col-sm-2">
+            Prolaznost natječaja
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ProlaznostNatječaja)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Uredi</a> |
+    <a asp-action="Index">Natrag na popis</a>
+</div>

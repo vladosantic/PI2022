@@ -1,0 +1,71 @@
+﻿@model IEnumerable<PI2022.Models.Bidding>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Natječaji</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Dodaj novi natječaj</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Naziv natječaja
+            </th>
+            <th>
+                Opis posla
+            </th>
+            <th>
+               Procijenjena vrijednost posla
+            </th>
+            <th>
+                Trajanje natječaja
+            </th>
+            <th>
+                Objavljen
+            </th>
+            <th>
+               Dobitnik natječaja
+            </th>
+            <th>
+                Prolaznost natječaja
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NazivNatječaja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpisPosla)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProcijenjenaVrijednostPosla) KM
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrajanjeNatjecaja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Objavljen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DobitnikNatječaja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProlaznostNatječaja)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalji</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Obriši</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
