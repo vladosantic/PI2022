@@ -12,5 +12,6 @@
         public DateTime PocetakRadova { get; set; }
         public DateTime ZavrsetakRadova { get; set; }
         public Double Trosak { get; set; }
+        public Double Profit { get; set; }
     }
 }

@@ -61,7 +61,7 @@ namespace PI2022
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Zaposlenik,Posao,OpisPosla,PocetakRada,ZavrsetakRada,BrojSati")] Schedule schedule)
+        public async Task<IActionResult> Create([Bind("Id,Zaposlenik,Posao,Napomena,PocetakRada,ZavrsetakRada,BrojSati")] Schedule schedule)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace PI2022
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Zaposlenik,Posao,OpisPosla,PocetakRada,ZavrsetakRada,BrojSati")] Schedule schedule)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Zaposlenik,Posao,Napomena,PocetakRada,ZavrsetakRada,BrojSati")] Schedule schedule)
         {
             if (id != schedule.Id)
             {

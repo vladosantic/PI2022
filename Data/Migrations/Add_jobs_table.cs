@@ -23,7 +23,8 @@ namespace PI2022.Data.Migrations
                     PotrebnaOprema = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PocetakRadova = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ZavrsetakRadova = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Trosak = table.Column<Double>(type: "float", nullable: false)
+                    Trosak = table.Column<Double>(type: "float", nullable: false),
+                    Profit = table.Column<Double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {

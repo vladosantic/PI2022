@@ -29,7 +29,7 @@ namespace PI2022.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Zaposlenik = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Posao = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    OpisPosla = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Napomena = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PocetakRada = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ZavrsetakRada = table.Column<DateTime>(type: "datetime2", nullable: false),
                     BrojSati = table.Column<int>(type: "int", nullable: false)

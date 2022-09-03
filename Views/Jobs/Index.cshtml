@@ -46,6 +46,9 @@
             <th>
                 Trošak
             </th>
+            <th>
+                Predviđeni profit
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -77,7 +80,10 @@
                 @Html.DisplayFor(modelItem => item.ZavrsetakRadova)
             </td>
             <td>
-                @Html.Raw(item.CijenaSata * item.BrojOsoba * item.BrojSati) KM
+                @Html.DisplayFor(modelItem => item.Trosak) KM
+            </td>
+            <td>
+                @Html.Raw(Math.Round(item.Profit, 2)) KM
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |

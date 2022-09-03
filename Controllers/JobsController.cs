@@ -72,6 +72,8 @@ namespace PI2022
             {
                 return View("Error");
             }
+            var random = new Random();
+            var broj = random.NextDouble() * (5 - 1) + 1;
             var model = new Jobs
             {
                 Naziv = offer.Naziv,
@@ -82,7 +84,8 @@ namespace PI2022
                 PotrebnaOprema = offer.PotrebnaOprema,
                 PocetakRadova = offer.PocetakRadova,
                 ZavrsetakRadova = offer.ZavrsetakRadova,
-                Trosak = offer.BrojOsoba * offer.BrojSati * offer.CijenaSata
+                Trosak = offer.BrojOsoba * offer.BrojSati * offer.CijenaSata,
+                Profit = (offer.BrojOsoba * offer.BrojSati * offer.CijenaSata) * broj
             };
             await _context.SaveChangesAsync();
             return View(model);
@@ -97,6 +100,10 @@ namespace PI2022
         {
             if (ModelState.IsValid)
             {
+                var random = new Random();
+                var broj = random.NextDouble() * (5 - 1) + 1;
+                jobs.Profit = (jobs.BrojOsoba * jobs.BrojSati * jobs.CijenaSata) * broj;
+                jobs.Trosak = jobs.BrojOsoba * jobs.BrojSati * jobs.CijenaSata;
                 _context.Add(jobs);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -136,6 +143,10 @@ namespace PI2022
             {
                 try
                 {
+                    var random = new Random();
+                    var broj = random.NextDouble() * (5 - 1) + 1;
+                    jobs.Profit = (jobs.BrojOsoba * jobs.BrojSati * jobs.CijenaSata) * broj;
+                    jobs.Trosak = jobs.BrojOsoba * jobs.BrojSati * jobs.CijenaSata;
                     _context.Update(jobs);
                     await _context.SaveChangesAsync();
                 }

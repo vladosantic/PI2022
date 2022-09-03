@@ -12,6 +12,27 @@
 
 </head>
 
+@{
+    double ukupniPrihodi = 0;
+    double ukupniTrosak = 0;
+ }
+@foreach(Employees zap in Model.Employees)
+{
+    ukupniTrosak += zap.Placa;
+}
+@foreach(Equipment eq in Model.Equipment)
+{
+    ukupniTrosak += (eq.Kolicina * (eq.CijenaDostave + eq.NabavnaCijena));
+}
+@foreach(Jobs jobs in Model.Jobs)
+{
+    ukupniTrosak += jobs.CijenaSata * jobs.BrojOsoba * jobs.BrojSati;
+    ukupniPrihodi += jobs.Profit;
+}
+@{
+    double ukupniProfit = ukupniPrihodi - ukupniTrosak;
+}
+
 <body class="dashboard-design">
     @* Summary Widgets *@
     <div class="row mb-4">
@@ -22,7 +43,7 @@
                 </div>
                 <div class="d-flex flex-column m-auto py-3" style="color: white;">
                     <span class="lead fst-italic">UKUPNI PRIHOD:</span>
-                    <h1 class="display-6 fw-bold">$6250</h1> @* @ViewBag.TotalIncome --> Umjesto novca *@
+                    <h1 class="display-6 fw-bold">@Math.Round(ukupniPrihodi, 2)</h1>
                 </div>
             </div>
         </div>
@@ -33,20 +54,7 @@
                 </div>
                 <div class="d-flex flex-column m-auto py-3" style="color: white;">
                     <span class="lead fst-italic">UKUPNI TROŠKOVI:</span>
-                    @{double ukupniTrosak = 0;}
-                    @foreach(Employees zap in Model.Employees)
-                    {
-                        ukupniTrosak += zap.Placa;
-                    }
-                    @foreach(Equipment eq in Model.Equipment)
-                    {
-                        ukupniTrosak += (eq.Kolicina * (eq.CijenaDostave + eq.NabavnaCijena));
-                    }
-                    @foreach(Jobs jobs in Model.Jobs)
-                    {
-                        ukupniTrosak += jobs.CijenaSata * jobs.BrojOsoba * jobs.BrojSati;
-                    }
-                    <h1 class="display-6 fw-bold">@ukupniTrosak</h1>
+                    <h1 class="display-6 fw-bold">@Math.Round(ukupniTrosak, 2)</h1>
                 </div>
             </div>
         </div>
@@ -56,24 +64,31 @@
                     <i class="fa fa-dollar" style="font-size:36px"></i>
                 </div>
                 <div class="d-flex flex-column m-auto py-3" style="color: white;">
-                    <span class="lead fst-italic">BALANS:</span>
-                    <h1 class="display-6 fw-bold">$4239</h1> @* @ViewBag.TotalBalance --> Umjesto novca *@
+                    <span class="lead fst-italic">PROFIT:</span>
+                    <h1 class="display-6 fw-bold">@Math.Round(ukupniProfit, 2)</h1>
                 </div>
             </div>
         </div>
     </div>
-
-    @* Doughnut and Spline Chart*@
     <div class="row mb-5 justify-content-center">
-        <div class="col-md-8">
+        @{
+
+            var myChart = new Chart(width: 600, height: 400)
+            .AddTitle("Odnos prihoda i troškova")
+            .AddSeries(
+                name: "Employee",
+                xValue: new[] {  "Peter", "Andrew", "Julie", "Mary", "Dave" },
+                yValues: new[] { "2", "6", "4", "5", "3" })
+            .Write();
+            }
+        @*<div class="col-md-8">
             <div class="widget chart">
                 <div class="p-4">
                     <h5 class="fw-bold" style="color: white;">Trošak po kategoriji</h5>
                 </div>
                 <ejs-accumulationchart id="doughnutchart" enableSmartLabels background="#1a222b">
                     <e-accumulation-series-collection>
-                        @* Dohvacamo iz Controller-a *@
-                        <e-accumulation-series dataSource="@ViewBag.DoughnutChartData" 
+                        <e-accumulation-series dataSource="@ViewBag.dataSource"
                         xName="categoryTitleWithIcon" yName="amount" innerRadius="60%" legendShape="Circle">
                             <e-accumulationseries-datalabel name="formattedAmount" visible>
                             </e-accumulationseries-datalabel>
@@ -85,6 +100,6 @@
                     <e-accumulationchart-tooltipsettings enable></e-accumulationchart-tooltipsettings> 
                 </ejs-accumulationchart>
             </div>
-        </div>
+        </div>*@
      </div>
 </body>

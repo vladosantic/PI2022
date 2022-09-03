@@ -61,7 +61,13 @@
             Trošak
         </dt>
         <dd class = "col-sm-10">
-            @Html.Raw(Model.CijenaSata * Model.BrojOsoba * Model.BrojSati) KM
+            @Html.DisplayFor(model => model.Trosak) KM
+        </dd>
+        <dt class = "col-sm-2">
+            Predviđeni profit
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Profit) KM
         </dd>
     </dl>
 </div>
