@@ -71,17 +71,7 @@
         </div>
     </div>
     <div class="row mb-5 justify-content-center">
-        @{
-
-            var myChart = new Chart(width: 600, height: 400)
-            .AddTitle("Odnos prihoda i troškova")
-            .AddSeries(
-                name: "Employee",
-                xValue: new[] {  "Peter", "Andrew", "Julie", "Mary", "Dave" },
-                yValues: new[] { "2", "6", "4", "5", "3" })
-            .Write();
-            }
-        @*<div class="col-md-8">
+        <div class="col-md-8">
             <div class="widget chart">
                 <div class="p-4">
                     <h5 class="fw-bold" style="color: white;">Trošak po kategoriji</h5>
@@ -100,6 +90,6 @@
                     <e-accumulationchart-tooltipsettings enable></e-accumulationchart-tooltipsettings> 
                 </ejs-accumulationchart>
             </div>
-        </div>*@
+        </div>
      </div>
 </body>
