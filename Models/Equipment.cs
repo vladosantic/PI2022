@@ -11,5 +11,7 @@
         public int Kolicina { get; set; }
         public Double NabavnaCijena { get; set; }
         public Double CijenaDostave { get; set; }
+        public string? NazivReferentneOpreme { get; set; }
+        public Double? CijenaReferentneOpreme { get; set; }
     }
 }

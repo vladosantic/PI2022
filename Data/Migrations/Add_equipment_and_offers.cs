@@ -42,6 +42,8 @@ namespace PI2022.Data.Migrations
                     CijenaDostave = table.Column<Double>(type: "float", nullable: false),
                     Proizvodac = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Dobavljac = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NazivReferentneOpreme = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CijenaReferentneOpreme = table.Column<Double>(type: "float", nullable: true)
                 },
                 constraints: table =>
                 {
