@@ -232,29 +232,24 @@ namespace PI2022.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("DobitnikNatječaja")
+                    b.Property<string>("Dobitnik")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("NazivNatječaja")
+                    b.Property<string>("Naziv")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Objavljen")
+                    b.Property<DateTime>("Objavljen")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Opis")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("OpisPosla")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProcijenjenaVrijednostPosla")
+                    b.Property<int>("ProcijenjenaVrijednost")
                         .HasColumnType("int");
 
-                    b.Property<string>("ProlaznostNatječaja")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TrajanjeNatjecaja")
+                    b.Property<string>("Trajanje")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -337,9 +332,6 @@ namespace PI2022.Data.Migrations
                     b.Property<double>("CijenaDostave")
                         .HasColumnType("float");
 
-                    b.Property<double?>("CijenaReferentneOpreme")
-                        .HasColumnType("float");
-
                     b.Property<DateTime>("DatumKupnje")
                         .HasColumnType("datetime2");
 
@@ -361,12 +353,12 @@ namespace PI2022.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("NazivReferentneOpreme")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Proizvodac")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("ReferentnaCijena")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -472,7 +464,10 @@ namespace PI2022.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("CijenaReferentneOpreme")
+                    b.Property<double>("CijenaReferentneOpreme")
+                        .HasColumnType("float");
+
+                    b.Property<int?>("EquipmentId")
                         .HasColumnType("int");
 
                     b.Property<string>("Kategorija")
@@ -488,6 +483,8 @@ namespace PI2022.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EquipmentId");
 
                     b.ToTable("References");
                 });
@@ -588,6 +585,18 @@ namespace PI2022.Data.Migrations
                     b.HasOne("PI2022.Models.Schedule", null)
                         .WithMany("Jobs")
                         .HasForeignKey("ScheduleId");
+                });
+
+            modelBuilder.Entity("PI2022.Models.References", b =>
+                {
+                    b.HasOne("PI2022.Models.Equipment", null)
+                        .WithMany("References")
+                        .HasForeignKey("EquipmentId");
+                });
+
+            modelBuilder.Entity("PI2022.Models.Equipment", b =>
+                {
+                    b.Navigation("References");
                 });
 
             modelBuilder.Entity("PI2022.Models.Schedule", b =>

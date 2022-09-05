@@ -57,15 +57,15 @@
                 <input asp-for="CijenaDostave" class="form-control" />
                 <span asp-validation-for="CijenaDostave" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="NazivReferentneOpreme" class="control-label">Naziv referentne opreme</label>
-                <input asp-for="NazivReferentneOpreme" class="form-control" />
-                <span asp-validation-for="NazivReferentneOpreme" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CijenaReferentneOpreme" class="control-label">Cijena referentne opreme</label>
-                <input asp-for="CijenaReferentneOpreme" class="form-control" />
-                <span asp-validation-for="CijenaReferentneOpreme" class="text-danger"></span>
+           <div class="form-group">
+                <label asp-for="ReferentnaCijena" class="control-label">Referentna cijena</label>
+                <select asp-for="ReferentnaCijena" class="form-control form-select-sm form-select">
+                    <option></option>
+                    @foreach(References x in Model.References)
+                    {
+                        <option>@x.CijenaReferentneOpreme</option>
+                    }
+                </select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Dodaj opremu" class="btn btn-primary" />

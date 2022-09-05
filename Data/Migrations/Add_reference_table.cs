@@ -8,6 +8,7 @@ namespace PI2022.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+           
             migrationBuilder.CreateTable(
                 name: "References",
                 columns: table => new
@@ -23,12 +24,33 @@ namespace PI2022.Data.Migrations
                 {
                     table.PrimaryKey("PK_References", x => x.Id);
                 });
+            migrationBuilder.AddColumn<int>(
+               name: "EquipmentId",
+               table: "References",
+               type: "int",
+               nullable: true);
+            migrationBuilder.CreateIndex(
+               name: "IX_References_EquipmentId",
+               table: "References",
+               column: "EquipmentId");
+            migrationBuilder.AddForeignKey(
+                name: "FK_References_Equipment_EquipmentId",
+                table: "References",
+                column: "EquipmentId",
+                principalTable: "Equipment",
+                principalColumn: "Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_References_Equipment_EquipmentId",
+                table: "References");
             migrationBuilder.DropTable(
                 name: "References");
+            migrationBuilder.DropIndex(
+                name: "IX_References_EquipmentId",
+                table: "References");
         }
     }
 }

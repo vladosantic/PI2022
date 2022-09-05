@@ -79,12 +79,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CijenaDostave) KM
             </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NazivReferentneOpreme)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CijenaReferentneOpreme)
-                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReferentnaCijena) KM
+            </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Detalji</a> |

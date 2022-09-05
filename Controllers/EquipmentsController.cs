@@ -62,7 +62,11 @@ namespace PI2022.Controllers
         // GET: Equipments/Create
         public IActionResult Create()
         {
-            return View();
+            var model = new Equipment
+            {
+                References = _context.References.ToList()
+            };
+            return View(model);
         }
 
         // POST: Equipments/Create
@@ -70,7 +74,7 @@ namespace PI2022.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Naziv,Kategorija,Proizvodac,Dobavljac,DatumKupnje,Kolicina,NabavnaCijena,CijenaDostave,NazivReferentneOpreme,CijenaReferentneOpreme")] Equipment equipment)
+        public async Task<IActionResult> Create([Bind("Id,Naziv,Kategorija,Proizvodac,Dobavljac,DatumKupnje,Kolicina,NabavnaCijena,CijenaDostave,ReferentnaCijena")] Equipment equipment)
         {
             if (ModelState.IsValid)
             {
@@ -102,7 +106,7 @@ namespace PI2022.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Naziv,Kategorija,Proizvodac,Dobavljac,DatumKupnje,Kolicina,NabavnaCijena,CijenaDostave,NazivReferentneOpreme,CijenaReferentneOpreme")] Equipment equipment)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Naziv,Kategorija,Proizvodac,Dobavljac,DatumKupnje,Kolicina,NabavnaCijena,CijenaDostave,ReferentnaCijena")] Equipment equipment)
         {
             if (id != equipment.Id)
             {
