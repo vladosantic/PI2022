@@ -56,7 +56,7 @@ namespace PI2022.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NazivNatječaja,OpisPosla,ProcijenjenaVrijednostPosla,TrajanjeNatjecaja,Objavljen,DobitnikNatječaja,ProlaznostNatječaja")] Bidding bidding)
+        public async Task<IActionResult> Create([Bind("Id,Naziv,Opis,ProcijenjenaVrijednost,Trajanje,Objavljen,Dobitnik")] Bidding bidding)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace PI2022.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NazivNatječaja,OpisPosla,ProcijenjenaVrijednostPosla,TrajanjeNatjecaja,Objavljen,DobitnikNatječaja,ProlaznostNatječaja")] Bidding bidding)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Naziv,Opis,ProcijenjenaVrijednost,Trajanje,Objavljen,Dobitnik")] Bidding bidding)
         {
             if (id != bidding.Id)
             {

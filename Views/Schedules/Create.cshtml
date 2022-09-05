@@ -17,7 +17,8 @@
                     <option>--- Odaberite zaposlenika ---</option>
                     @foreach(Employees zaposlenik in Model.Employees)
                     {
-                        <option>@zaposlenik.Ime @zaposlenik.Prezime</option>
+                        if(zaposlenik.Status == true){
+                        <option>@zaposlenik.Ime @zaposlenik.Prezime</option>}
                     }
                 </select>
             </div>

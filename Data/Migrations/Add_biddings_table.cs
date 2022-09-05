@@ -14,13 +14,12 @@ namespace PI2022.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NazivNatječaja = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    OpisPosla = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProcijenjenaVrijednostPosla = table.Column<int>(type: "int", nullable: false),
-                    TrajanjeNatjecaja = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Objavljen = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DobitnikNatječaja = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ProlaznostNatječaja = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Naziv = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Opis = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProcijenjenaVrijednost = table.Column<int>(type: "int", nullable: false),
+                    Trajanje = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Objavljen = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Dobitnik = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

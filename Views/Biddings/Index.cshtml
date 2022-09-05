@@ -19,7 +19,7 @@
                 Opis posla
             </th>
             <th>
-               Procijenjena vrijednost posla
+               Procijenjena vrijednost
             </th>
             <th>
                 Trajanje natječaja
@@ -30,9 +30,6 @@
             <th>
                Dobitnik natječaja
             </th>
-            <th>
-                Prolaznost natječaja
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -40,25 +37,22 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.NazivNatječaja)
+                @Html.DisplayFor(modelItem => item.Naziv)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.OpisPosla)
+                @Html.DisplayFor(modelItem => item.Opis)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ProcijenjenaVrijednostPosla) KM
+                @Html.DisplayFor(modelItem => item.ProcijenjenaVrijednost) KM
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TrajanjeNatjecaja)
+                @Html.DisplayFor(modelItem => item.Trajanje)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Objavljen)
+                @Html.Raw(DateOnly.FromDateTime(item.Objavljen))
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DobitnikNatječaja)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProlaznostNatječaja)
+                @Html.DisplayFor(modelItem => item.Dobitnik)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |

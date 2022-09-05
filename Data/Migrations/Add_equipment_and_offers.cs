@@ -49,6 +49,7 @@ namespace PI2022.Data.Migrations
                 {
                     table.PrimaryKey("PK_Equipment", x => x.Id);
                 });; ;
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

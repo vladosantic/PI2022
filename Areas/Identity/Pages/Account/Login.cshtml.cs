@@ -128,7 +128,7 @@ namespace PI2022.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Neuspješan pokušaj prijave.");
                     return Page();
                 }
             }

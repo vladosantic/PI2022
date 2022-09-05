@@ -10,7 +10,7 @@
 
         public string Opis { get; set; }
 
-        public int CijenaReferentneOpreme { get; set; }
+        public Double CijenaReferentneOpreme { get; set; }
 
     }
 }

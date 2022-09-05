@@ -4,19 +4,16 @@
     {
         public int Id { get; set; }
 
-        public string NazivNatječaja { get; set; }
+        public string Naziv { get; set; }
 
-        public string OpisPosla { get; set; }
-        public int ProcijenjenaVrijednostPosla { get; set; }
+        public string Opis { get; set; }
+        public int ProcijenjenaVrijednost { get; set; }
 
-        public string? TrajanjeNatjecaja { get; set; }
+        public string? Trajanje { get; set; }
 
-        public string Objavljen { get; set; }
+        public DateTime Objavljen { get; set; }
 
-        public string? DobitnikNatječaja { get; set; }
-
-        public string ProlaznostNatječaja { get; set; }
-
+        public string? Dobitnik { get; set; }
 
     }
 }
