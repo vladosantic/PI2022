@@ -32,13 +32,18 @@ namespace PI2022
         {
             var employees = from m in _context.Employees
                          select m;
+            var final = employees;
+            var list1 = employees;
+            var list2 = employees;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                employees = employees.Where(s => s.Ime!.Contains(searchString));
+                list1 = employees.Where(s => s.Ime!.Contains(searchString));
+                list2 = employees.Where(s => s.Prezime!.Contains(searchString));
+                final = list1.Concat(list2);
             }
 
-            return View(await employees.ToListAsync());
+            return View(await final.ToListAsync());
         }
 
         // GET: Employees/Details/5

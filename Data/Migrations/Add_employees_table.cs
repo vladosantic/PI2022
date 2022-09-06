@@ -27,22 +27,22 @@ namespace PI2022.Data.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "Name", "NormalizedName" },
-                values: new[] { "1", "SuperAdmin", "SUPERADMIN" }
+                values: new[] { "1", "Administrator", "ADMINISTRATOR" }
                 );
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "Name", "NormalizedName" },
-                values: new[] { "2", "Admin", "ADMIN" }
+                values: new[] { "2", "Vlasnik", "VLASNIK" }
                 );
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "Name", "NormalizedName" },
-                values: new[] { "3", "Moderator", "MODERATOR" }
+                values: new[] { "3", "Poslodavac", "POSLODAVAC" }
                 );
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "Name", "NormalizedName" },
-                values: new[] { "4", "Basic", "BASIC" }
+                values: new[] { "4", "Zaposlenik", "ZAPOSLENIK" }
                 );
 
             migrationBuilder.CreateTable(
@@ -69,12 +69,34 @@ namespace PI2022.Data.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                 });
+
             var hasher = new PasswordHasher<IdentityUser>();
-            var superadmin = new IdentityUser();
+            var admin = new IdentityUser();
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "UserName","NormalizedUserName", "Email", "NormalizedEmail", "PasswordHash", "AccessFailedCount", "EmailConfirmed", "PhoneNumberConfirmed", "TwoFactorEnabled", "LockoutEnabled", "SecurityStamp", "ConcurrencyStamp"},
-                values: new object[] { "1", "superadmin@fsre.ba", "SUPERADMIN@FSRE.BA", "superadmin@fsre.ba", "SUPERADMIN@FSRE.BA", hasher.HashPassword(superadmin, "Password123@") ,0 , true, true, false, false, "TestStamp", "TestStamp"}
+                values: new object[] { "1", "admin", "admin", "admin@firma.ba", "admin@firma.ba", hasher.HashPassword(admin, "Admin123.") ,0 , true, true, false, false, "TestStamp", "TestStamp"}
+                );
+
+            var owner = new IdentityUser();
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "UserName", "NormalizedUserName", "Email", "NormalizedEmail", "PasswordHash", "AccessFailedCount", "EmailConfirmed", "PhoneNumberConfirmed", "TwoFactorEnabled", "LockoutEnabled", "SecurityStamp", "ConcurrencyStamp" },
+                values: new object[] { "2", "vlasnik", "vlasnik", "vlasnik@firma.ba", "vlasnik@firma.ba", hasher.HashPassword(owner, "Vlasnik123."), 0, true, true, false, false, "TestStamp", "TestStamp" }
+                );
+
+            var employer = new IdentityUser();
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "UserName", "NormalizedUserName", "Email", "NormalizedEmail", "PasswordHash", "AccessFailedCount", "EmailConfirmed", "PhoneNumberConfirmed", "TwoFactorEnabled", "LockoutEnabled", "SecurityStamp", "ConcurrencyStamp" },
+                values: new object[] { "3", "poslodavac", "poslodavac", "poslodavac@firma.ba", "poslodavac@firma.ba", hasher.HashPassword(employer, "Poslodavac123."), 0, true, true, false, false, "TestStamp", "TestStamp" }
+                );
+
+            var employee = new IdentityUser();
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "UserName", "NormalizedUserName", "Email", "NormalizedEmail", "PasswordHash", "AccessFailedCount", "EmailConfirmed", "PhoneNumberConfirmed", "TwoFactorEnabled", "LockoutEnabled", "SecurityStamp", "ConcurrencyStamp" },
+                values: new object[] { "4", "zaposlenik", "zaposlenik", "zaposlenik@firma.ba", "zaposlenik@firma.ba", hasher.HashPassword(employee, "Zaposlenik123."), 0, true, true, false, false, "TestStamp", "TestStamp" }
                 );
 
             migrationBuilder.CreateTable(
@@ -85,7 +107,7 @@ namespace PI2022.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Ime = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Prezime = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Spol = table.Column<char>(type: "char", nullable: false),
+                    Spol = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Adresa = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Telefon = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -204,6 +226,36 @@ namespace PI2022.Data.Migrations
                 table: "AspNetUserRoles",
                 columns: new[] { "UserId", "RoleId" },
                 values: new[] { "1", "4" }
+                );
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "UserId", "RoleId" },
+                values: new[] { "2", "2" }
+                );
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "UserId", "RoleId" },
+                values: new[] { "2", "3" }
+                );
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "UserId", "RoleId" },
+                values: new[] { "2", "4" }
+                );
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "UserId", "RoleId" },
+                values: new[] { "3", "3" }
+                );
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "UserId", "RoleId" },
+                values: new[] { "3", "4" }
+                );
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "UserId", "RoleId" },
+                values: new[] { "4", "4" }
                 );
 
             migrationBuilder.CreateTable(

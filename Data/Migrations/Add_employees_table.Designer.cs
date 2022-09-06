@@ -262,6 +262,22 @@ namespace PI2022.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Spol")
+                        .IsRequired()
+                        .HasColumnType("char");
+
+                    b.Property<string>("ZaposlenOd")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Placa")
+                        .IsRequired()
+                        .HasColumnType("float");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.ToTable("Employees");

@@ -47,7 +47,7 @@ namespace PI2022.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Equipment", x => x.Id);
-                });; ;
+                }); ; ;
 
         }
 
