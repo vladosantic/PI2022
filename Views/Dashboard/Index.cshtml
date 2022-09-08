@@ -12,27 +12,6 @@
 
 </head>
 
-@{
-    double ukupniPrihodi = 0;
-    double ukupniTrosak = 0;
- }
-@foreach(Employees zap in Model.Employees)
-{
-    ukupniTrosak += zap.Placa;
-}
-@foreach(Equipment eq in Model.Equipment)
-{
-    ukupniTrosak += (eq.Kolicina * (eq.CijenaDostave + eq.NabavnaCijena));
-}
-@foreach(Jobs jobs in Model.Jobs)
-{
-    ukupniTrosak += jobs.CijenaSata * jobs.BrojOsoba * jobs.BrojSati;
-    ukupniPrihodi += jobs.Profit;
-}
-@{
-    double ukupniProfit = ukupniPrihodi - ukupniTrosak;
-}
-
 <body class="dashboard-design">
     @* Summary Widgets *@
     <div class="row mb-4">
@@ -43,7 +22,7 @@
                 </div>
                 <div class="d-flex flex-column m-auto py-3" style="color: white;">
                     <span class="lead fst-italic">UKUPNI PRIHOD:</span>
-                    <h1 class="display-6 fw-bold">@Math.Round(ukupniPrihodi, 2)</h1>
+                    <h1 class="display-6 fw-bold">@Math.Round(@ViewBag.UkupniPrihodi, 2)</h1>
                 </div>
             </div>
         </div>
@@ -54,7 +33,7 @@
                 </div>
                 <div class="d-flex flex-column m-auto py-3" style="color: white;">
                     <span class="lead fst-italic">UKUPNI TROŠKOVI:</span>
-                    <h1 class="display-6 fw-bold">@Math.Round(ukupniTrosak, 2)</h1>
+                    <h1 class="display-6 fw-bold">@Math.Round(@ViewBag.UkupniTrosak, 2)</h1>
                 </div>
             </div>
         </div>
@@ -65,7 +44,7 @@
                 </div>
                 <div class="d-flex flex-column m-auto py-3" style="color: white;">
                     <span class="lead fst-italic">PROFIT:</span>
-                    <h1 class="display-6 fw-bold">@Math.Round(ukupniProfit, 2)</h1>
+                    <h1 class="display-6 fw-bold">@Math.Round(ViewBag.UkupniProfit, 2)</h1>
                 </div>
             </div>
         </div>
@@ -78,8 +57,8 @@
                 </div>
                 <ejs-accumulationchart id="doughnutchart" enableSmartLabels background="#1a222b">
                     <e-accumulation-series-collection>
-                        <e-accumulation-series dataSource="@ViewBag.dataSource"
-                        xName="categoryTitleWithIcon" yName="amount" innerRadius="60%" legendShape="Circle">
+                        <e-accumulation-series DataSource = "@ViewBag.dataSource"
+                        xName="xValue" yName="yValue" innerRadius="60%" legendShape="Circle">
                             <e-accumulationseries-datalabel name="formattedAmount" visible>
                             </e-accumulationseries-datalabel>
                         </e-accumulation-series>

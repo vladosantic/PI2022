@@ -14,11 +14,10 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
-
-  /* Za dark-mode Bootstrap */
-
- /* background-color: #12161d;
+    margin-bottom: 60px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    /* Za dark-mode Bootstrap */
+    /* background-color: #12161d;
   color: #fff;*/
 }
 

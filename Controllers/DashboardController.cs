@@ -14,25 +14,37 @@ namespace PI2022.Controllers
         }
         public IActionResult Index()
         {
-            // Doughnut Chart - Expense by Category
-            //ViewBag.DoughnutChartData = SelectedTransactions
-            //    .Where(i => i.Category.Type = "Expense")
-            //    .GroupBy(j => j.Category.CategoryId)
-            //    .Select(k => new
-            //    {
-            //        categoryTitleWithIcon = k.First().Category.Icon + " " + k.First().Category.Title,
-            //        amount = k.Sum(j => j.Amount),
-            //        formattedAmount = k.Sum(j => j.Amount).ToString("C0")
-            //    })
-            //    .ToList();
-
-            var model = new Dashboard
+            double UkupniTrosak = 0;
+            double UkupniPrihodi = 0;
+            foreach(Employees emp in _context.Employees)
             {
-                Employees = _context.Employees.ToList(),
-                Jobs = _context.Jobs.ToList(),
-                Equipment = _context.Equipment.ToList()
+                UkupniTrosak += emp.Placa;
+            }
+            foreach(Equipment eq in _context.Equipment)
+            {
+                UkupniTrosak += (eq.Kolicina * (eq.CijenaDostave + eq.NabavnaCijena));
+            }
+            foreach(Jobs jobs in _context.Jobs)
+            {
+                UkupniTrosak += jobs.CijenaSata * jobs.BrojOsoba * jobs.BrojSati;
+                UkupniPrihodi += jobs.Profit;
+            }
+            double UkupniProfit = UkupniPrihodi - UkupniTrosak;
+            ViewBag.UkupniTrosak = UkupniTrosak;
+            ViewBag.UkupniPrihodi = UkupniPrihodi;
+            ViewBag.UkupniProfit = UkupniProfit;
+            List<Test> chartData = new List<Test>
+            {
+                new Test { xValue = "Ukupni profit", yValue = UkupniProfit},
+                new Test { xValue = "Ukupni trošak", yValue = UkupniTrosak},
             };
-            return View(model);
+            ViewBag.dataSource = chartData;
+            return View();
+        }
+        public class Test
+        {
+            public string xValue;
+            public double yValue;
         }
     }
 }
