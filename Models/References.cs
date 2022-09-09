@@ -10,6 +10,9 @@
 
         public string Opis { get; set; }
 
+        public string Dobavljac { get; set; }
+
+
         public Double CijenaReferentneOpreme { get; set; }
 
     }

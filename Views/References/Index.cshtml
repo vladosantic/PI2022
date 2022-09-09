@@ -22,6 +22,9 @@
                 Opis
             </th>
             <th>
+                Dobavljač
+            </th>
+            <th>
                 Cijena referentne opreme
             </th>
             <th></th>
@@ -39,6 +42,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Opis)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dobavljac)
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CijenaReferentneOpreme) KM
             </td>
