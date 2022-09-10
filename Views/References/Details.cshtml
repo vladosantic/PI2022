@@ -4,24 +4,25 @@
     ViewData["Title"] = "Detalji referentne opreme";
 }
 
-<h1>Detalji referentne opreme</h1>
-<hr/>
+<h1 class="d-flex justify-content-center py-3 fw-bold">DETALJI REFERENTNE OPREME</h1>
+
 <div>
-    <dl class="row">
+    <hr />
+    <dl class="row ms-4">
         <dt class = "col-sm-2">
-            Naziv
+            Naziv:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Naziv)
         </dd>
         <dt class = "col-sm-2">
-            Kategorija
+            Kategorija:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Kategorija)
         </dd>
         <dt class = "col-sm-2">
-            Opis
+            Opis:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Opis)
@@ -33,14 +34,22 @@
             @Html.DisplayFor(model => model.Dobavljac)
         </dd>
         <dt class = "col-sm-2">
-           Cijena referentne opreme
+           Cijena Referentne Opreme:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.CijenaReferentneOpreme) KM
         </dd>
     </dl>
 </div>
+<hr />
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Uredi</a> |
-    <a asp-action="Index">Natrag na popis</a>
+    <div class="btn-toolbar justify-content-between my-2" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group" role="group" aria-label="First group">
+            <a style="color: white;" class="btn btn-warning fw-bold" asp-action="Edit" asp-route-id="@Model?.Id">Promijeni Podatke</a>
+        </div>
+        <div class="input-group">
+            <a class="btn btn-danger fw-bold" asp-action="Index">&#11178; Natrag na Popis</a>
+        </div>
+    </div>
 </div>
+<hr />

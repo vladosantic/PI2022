@@ -4,74 +4,87 @@
     ViewData["Title"] = "Brisanje posla";
 }
 
-<h3>Jeste li sigurni da želite obrisati ovaj posao?</h3>
+<h1 class="d-flex justify-content-center py-3 fw-bold">BRISANJE POSLA</h1>
+<hr />
+<h4 class="fst-italic ms-3">Jeste li sigurni da želite obrisati ovaj posao?</h4>
+
 <div>
-    <dl class="row">
+    <hr />
+    <dl class="row ms-4">
         <dt class = "col-sm-2">
-            Naziv
+            Naziv:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Naziv)
         </dd>
         <dt class = "col-sm-2">
-            Opis posla
+            Opis Posla:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.OpisPosla)
         </dd>
         <dt class = "col-sm-2">
-            Broj osoba
+            Broj Osoba:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.BrojOsoba)
         </dd>
         <dt class = "col-sm-2">
-            Broj sati
+            Broj Sati:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.BrojSati)
         </dd>
         <dt class = "col-sm-2">
-            Cijena sata
+            Cijena po Satu:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.CijenaSata)
         </dd>
         <dt class = "col-sm-2">
-            Potrebna oprema
+            Potrebna Oprema:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.PotrebnaOprema)
         </dd>
         <dt class = "col-sm-2">
-            Početak radova
+            Početak Radova:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.PocetakRadova)
         </dd>
         <dt class = "col-sm-2">
-            Završetak radova
+            Završetak Radova:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ZavrsetakRadova)
         </dd>
         <dt class = "col-sm-2">
-            Trošak
+            Trošak:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Trosak) KM
         </dd>
         <dt class = "col-sm-2">
-            Predviđeni profit
+            Predviđeni Profit:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Profit) KM
         </dd>
     </dl>
-    
+</div>
+<hr />
+<div>
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Brisanje" class="btn btn-danger" /> |
-        <a asp-action="Index">Natrag na popis</a>
+        <div class="btn-toolbar justify-content-between my-2" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group" role="group" aria-label="First group">
+                <input type="submit" value="Obriši" class="btn btn-danger fw-bold" />
+            </div>
+            <div class="input-group">
+                <a class="btn btn-danger fw-bold" asp-action="Index">&#11178; Natrag na Popis</a>
+            </div>
+        </div>
     </form>
 </div>
+<hr />

@@ -3,50 +3,58 @@
 @{
     ViewData["Title"] = "Detalji natječaja";
 }
+<h1 class="d-flex justify-content-center py-3 fw-bold">DETALJI NATJEČAJA</h1>
 
-<h1>Detalji natječaja</h1>
-<hr/>
 <div>
-    <dl class="row">
+    <hr />
+    <dl class="row ms-4">
         <dt class = "col-sm-2">
-            Naziv natječaja
+            Naziv Natječaja:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Naziv)
         </dd>
         <dt class = "col-sm-2">
-            Opis posla
+            Opis Posla:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Opis)
         </dd>
         <dt class = "col-sm-2">
-            Procijenjena vrijednost
+            Procijenjena Vrijednost:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ProcijenjenaVrijednost) KM
         </dd>
         <dt class = "col-sm-2">
-            Trajanje natječaja
+            Trajanje Natječaja:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Trajanje)
         </dd>
         <dt class = "col-sm-2">
-            Objavljen
+            Objavljen:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Objavljen)
         </dd>
         <dt class = "col-sm-2">
-            Dobitnik natječaja
+            Dobitnik Natječaja:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Dobitnik)
         </dd>
     </dl>
 </div>
+<hr />
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Uredi</a> |
-    <a asp-action="Index">Natrag na popis</a>
+    <div class="btn-toolbar justify-content-between my-2" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group" role="group" aria-label="First group">
+            <a style="color: white;" class="btn btn-warning fw-bold" asp-action="Edit" asp-route-id="@Model?.Id">Promijeni Podatke</a>
+        </div>
+        <div class="input-group">
+            <a class="btn btn-danger fw-bold" asp-action="Index">&#11178; Natrag na Popis</a>
+        </div>
+    </div>
 </div>
+<hr />

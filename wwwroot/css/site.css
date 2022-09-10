@@ -76,3 +76,30 @@ body {
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
+/* Footer -> FIXED Home */
+.footer-home {
+    height: 120px;
+    width: 100%;
+    position: fixed;
+    bottom: 0pt;
+    left: 0pt;
+}
+
+/* Footer -> FIXED Others */
+.footer-others {
+    height: 105px;
+    width: 100%;
+    position: fixed;
+    bottom: 0pt;
+    left: 0pt;
+}
+
+/* Footer -> ABSOLUTE */
+.footer-absolute {
+    height: 364px;
+    width: 100%;
+    position: scroll;
+    bottom: 0pt;
+    left: 0pt;
+}

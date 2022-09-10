@@ -4,49 +4,57 @@
     ViewData["Title"] = "Detalji";
 }
 
-<h1>Detalji</h1>
+<h1 class="d-flex justify-content-center py-3 fw-bold">DETALJI RASPOREDA</h1>
 
 <div>
-    <dl class="row">
+    <hr />
+    <dl class="row ms-4">
         <dt class = "col-sm-2">
-            Zaposlenik
+            Zaposlenik:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Zaposlenik)
         </dd>
         <dt class = "col-sm-2">
-            Posao
+            Posao:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Posao)
         </dd>
         <dt class = "col-sm-2">
-            Napomena
+            Napomena:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Napomena)
         </dd>
         <dt class = "col-sm-2">
-            Početak rada
+            Početak rada:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.PocetakRada)
         </dd>
         <dt class = "col-sm-2">
-            Završetak rada
+            Završetak rada:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ZavrsetakRada)
         </dd>
         <dt class = "col-sm-2">
-             Broj sati
+             Broj sati:
         </dt>
         <dd class = "col-sm-10">
             @Html.Raw(Math.Round(Model.ZavrsetakRada.Subtract(Model.PocetakRada).TotalHours, 1))
         </dd>
     </dl>
 </div>
+<hr />
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Uredi</a> |
-    <a asp-action="Index">Natrag na popis</a>
+    <div class="btn-toolbar justify-content-between my-2" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group" role="group" aria-label="First group">
+            <a style="color: white;" class="btn btn-warning fw-bold" asp-action="Edit" asp-route-id="@Model?.Id">Promijeni Podatke</a>
+        </div>
+        <div class="input-group">
+            <a class="btn btn-danger fw-bold" asp-action="Index">&#11178; Natrag na Popis</a>
+        </div>
+    </div>
 </div>

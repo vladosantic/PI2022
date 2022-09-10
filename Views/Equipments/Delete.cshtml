@@ -4,69 +4,81 @@
     ViewData["Title"] = "Obriši opremu";
 }
 
-<h3>Jeste li sigurni da želite ukloniti ovu opremu?</h3>
+<h1 class="d-flex justify-content-center py-3 fw-bold">UKLONI OPREMU</h1>
 <hr />
+<h4 class="fst-italic ms-3">Jeste li sigurni da želite obrisati ovaj artikl?</h4>
+
 <div>
-    <dl class="row">
+    <hr />
+    <dl class="row ms-4">
         <dt class = "col-sm-2">
-            Naziv
+            Naziv:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Naziv)
         </dd>
         <dt class="col-sm-2">
-            Kategorija
+            Kategorija:
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Kategorija)
         </dd>
         <dt class="col-sm-2">
-            Proizvođač
+            Proizvođač:
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Proizvodac)
         </dd>
         <dt class="col-sm-2">
-            Dobavljač
+            Dobavljač:
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Dobavljac)
         </dd>
         <dt class="col-sm-2">
-            Datum kupnje
+            Datum kupnje:
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DatumKupnje)
         </dd>
         <dt class = "col-sm-2">
-            Količina
+            Količina:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Kolicina)
         </dd>
         <dt class = "col-sm-2">
-            Nabavna cijena
+            Nabavna cijena:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.NabavnaCijena) KM
         </dd>
         <dt class="col-sm-2">
-            Cijena dostave
+            Cijena dostave:
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.CijenaDostave) KM
         </dd>
         <dt class="col-sm-2">
-            Referentna cijena
+            Referentna cijena:
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ReferentnaCijena) KM
         </dd>
     </dl>
-    
+ </div>
+ <hr />
+ <div>
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Obriši" class="btn btn-danger" /> |
-        <a asp-action="Index">Natrag na popis</a>
+        <div class="btn-toolbar justify-content-between my-2" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group" role="group" aria-label="First group">
+                <input type="submit" value="Obriši" class="btn btn-danger fw-bold" />
+            </div>
+            <div class="input-group">
+                <a class="btn btn-danger fw-bold" asp-action="Index">&#11178; Natrag na Popis</a>
+            </div>
+        </div>
     </form>
 </div>
+<hr />
