@@ -96,7 +96,7 @@ namespace PI2022
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Naziv,OpisPosla,BrojOsoba,BrojSati,CijenaSata,PotrebnaOprema,PotrebniCertifikati,Adresa,PocetakRadova,Trosak")] Jobs jobs)
+        public async Task<IActionResult> Create([Bind("Id,Naziv,OpisPosla,BrojOsoba,BrojSati,CijenaSata,PotrebnaOprema,PotrebniCertifikati,Adresa,PocetakRadova,ZavrsetakRadova,Trosak")] Jobs jobs)
         {
             if (ModelState.IsValid)
             {
@@ -132,7 +132,7 @@ namespace PI2022
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Naziv,OpisPosla,BrojOsoba,BrojSati,CijenaSata,PotrebnaOprema,PotrebniCertifikati,Adresa,PocetakRadova,Trosak")] Jobs jobs)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Naziv,OpisPosla,BrojOsoba,BrojSati,CijenaSata,PotrebnaOprema,PotrebniCertifikati,Adresa,PocetakRadova,ZavrsetakRadova,Trosak")] Jobs jobs)
         {
             if (id != jobs.Id)
             {

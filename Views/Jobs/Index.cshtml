@@ -73,10 +73,10 @@
                 @Html.DisplayFor(modelItem => item.PotrebnaOprema)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PocetakRadova)
+                @Html.Raw(DateOnly.FromDateTime(item.PocetakRadova))
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ZavrsetakRadova)
+                @Html.Raw(DateOnly.FromDateTime(item.ZavrsetakRadova))
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Trosak) KM

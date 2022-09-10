@@ -18,6 +18,7 @@ namespace PI2022.Data.Migrations
                     Naziv = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Kategorija = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Opis = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Dobavljac = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CijenaReferentneOpreme = table.Column<Double>(type: "float", nullable: false)
                 },
                 constraints: table =>
