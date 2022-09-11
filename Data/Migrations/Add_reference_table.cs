@@ -40,6 +40,33 @@ namespace PI2022.Data.Migrations
                 column: "EquipmentId",
                 principalTable: "Equipment",
                 principalColumn: "Id");
+
+            migrationBuilder.Sql("INSERT INTO [References] ( Naziv, Kategorija, Opis, Dobavljac, CijenaReferentneOpreme) " +
+                "VALUES ('Majica','Ljetna kolekcija','Nike majica kratkih rukava', 'Nike Import', '50');", false);
+
+            migrationBuilder.Sql("INSERT INTO [References] ( Naziv, Kategorija, Opis, Dobavljac, CijenaReferentneOpreme) " +
+                "VALUES ('Dres','Proljetna kolekcija','Dres kratkih rukava bez oznaka', 'Adidas Import', '80');", false);
+
+            migrationBuilder.Sql("INSERT INTO [References] ( Naziv, Kategorija, Opis, Dobavljac, CijenaReferentneOpreme) " +
+                "VALUES ('Jakna','Zimska kolekcija','Zimska jakna', 'Sport Import', '120');", false);
+
+            migrationBuilder.Sql("INSERT INTO [References] ( Naziv, Kategorija, Opis, Dobavljac, CijenaReferentneOpreme) " +
+                "VALUES ('Ruksak','Jesenska kolekcija','Ruksak za trening', 'Nike Import', '60');", false);
+
+            migrationBuilder.Sql("INSERT INTO [References] ( Naziv, Kategorija, Opis, Dobavljac, CijenaReferentneOpreme) " +
+                "VALUES ('Majica','Ljetna kolekcija','Nike majica kratkih rukava', 'Nike Import', '50');", false);
+
+            migrationBuilder.Sql("INSERT INTO [References] ( Naziv, Kategorija, Opis, Dobavljac, CijenaReferentneOpreme) " +
+                "VALUES ('Reket za tenis','Ostalo','Reket za tenis 45 cm', 'Tenis Import', '160');", false);
+
+            migrationBuilder.Sql("INSERT INTO [References] ( Naziv, Kategorija, Opis, Dobavljac, CijenaReferentneOpreme) " +
+                "VALUES ('Lopta za nogomet','Ostalo','Lopta za nogomet na travi', 'Adidas Import', '80');", false);
+
+            migrationBuilder.Sql("INSERT INTO [References] ( Naziv, Kategorija, Opis, Dobavljac, CijenaReferentneOpreme) " +
+                "VALUES ('Lopta za rukomet','Ostalo','Lopta za rukomet', 'Hummel Import', '75');", false);
+
+            migrationBuilder.Sql("INSERT INTO [References] ( Naziv, Kategorija, Opis, Dobavljac, CijenaReferentneOpreme) " +
+                "VALUES ('Kaciga','Ostalo','Kaciga za bicikl ili rolanje', 'Sport Import', '50');", false);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

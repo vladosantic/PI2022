@@ -30,6 +30,9 @@ namespace PI2022.Data.Migrations
                 {
                     table.PrimaryKey("PK_Jobs", x => x.Id);
                 });
+
+            migrationBuilder.Sql("INSERT INTO Jobs ( Naziv, OpisPosla, BrojOsoba, BrojSati, CijenaSata, PotrebnaOprema, PocetakRadova, ZavrsetakRadova, Trosak, Profit) " +
+                "VALUES ('Prodaja opreme za Q1', 'Prodaja opreme za prvi kvartal', '10', '720', '5', '/', '2022-01-01T08:00:00.000000', '2022-03-31T16:00:00.000000', '36000', '152950.14');", false);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

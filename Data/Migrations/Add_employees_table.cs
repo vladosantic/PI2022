@@ -126,13 +126,13 @@ namespace PI2022.Data.Migrations
                 "VALUES ('Marko', 'Sesar', 'M', 'Splitska 21', '063 123 456', 'marko@firma.ba', 'Menadžer', 'Project Menagement', '1500.00', 'false', '2019-01-22T00:00:00.000');", false);
 
             migrationBuilder.Sql("INSERT INTO Employees (Ime, Prezime, Spol, Adresa, Telefon, Email, Pozicija, Certifikati, Placa, Status, ZaposlenOd) " +
-                "VALUES ('Jure', 'Ljubas', 'M', 'Kralja Tomislava 12', '063 321 456', 'jure@firma.ba', 'Blagajnik', 'Dozvola B kategorija', '950.00', 'false', '2016-10-02T00:00:00.000');", false);
+                "VALUES ('Jure', 'Ljubas', 'M', 'Kralja Tomislava 12', '063 321 456', 'jure@firma.ba', 'Blagajnik', 'Dozvola C kategorija', '950.00', 'true', '2016-10-02T00:00:00.000');", false);
 
             migrationBuilder.Sql("INSERT INTO Employees (Ime, Prezime, Spol, Adresa, Telefon, Email, Pozicija, Certifikati, Placa, Status, ZaposlenOd) " +
-                "VALUES ('Hrvoje', 'Leko', 'M', 'Splitska 15', '063 142 123', 'hrvoje@firma.ba', 'Skladištar', '', '1200.00', 'false', '2022-02-02T00:00:00.000');", false);
+                "VALUES ('Hrvoje', 'Leko', 'M', 'Splitska 15', '063 142 123', 'hrvoje@firma.ba', 'Skladištar', '', '1200.00', 'true', '2022-02-02T00:00:00.000');", false);
 
             migrationBuilder.Sql("INSERT INTO Employees (Ime, Prezime, Spol, Adresa, Telefon, Email, Pozicija, Certifikati, Placa, Status, ZaposlenOd) " +
-                "VALUES ('Ivana', 'Kule', 'Ž', 'Ivana Zovke 91', '063 854 648', 'ivana@firma.ba', 'Blagajnik', ' ', '1000.00', 'false', '2018-09-12T00:00:00.000');", false);
+                "VALUES ('Ivana', 'Kule', 'Ž', 'Ivana Zovke 91', '063 854 648', 'ivana@firma.ba', 'Blagajnik', ' ', '1000.00', 'true', '2018-09-12T00:00:00.000');", false);
 
             migrationBuilder.Sql("INSERT INTO Employees (Ime, Prezime, Spol, Adresa, Telefon, Email, Pozicija, Certifikati, Placa, Status, ZaposlenOd) " +
                 "VALUES ('Ana', 'Leko', 'Ž', 'Kralja Zvonimira 15', '063 431 671', 'ana@firma.ba', 'Tajnica', 'Odnosi s javnošću', '1150.00', 'false', '2009-10-15T00:00:00.000');", false);

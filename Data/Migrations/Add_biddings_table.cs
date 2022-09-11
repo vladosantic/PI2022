@@ -25,6 +25,15 @@ namespace PI2022.Data.Migrations
                 {
                     table.PrimaryKey("PK_Bidding", x => x.Id);
                 });
+
+            migrationBuilder.Sql("INSERT INTO Bidding ( Naziv, Opis, ProcijenjenaVrijednost, Trajanje, Objavljen, Dobitnik) " +
+                "VALUES ('Blagajnik', 'Rad na blagajni, rad sa kupcima.', '2000', '30 dana', '2022-09-01T10:00:00.000000', ' ');", false);
+
+            migrationBuilder.Sql("INSERT INTO Bidding ( Naziv, Opis, ProcijenjenaVrijednost, Trajanje, Objavljen, Dobitnik) " +
+                "VALUES ('Nabava nove opreme', 'Nabava nove opreme iz jesenske kolekcije', '25000', '30 dana', '2022-08-01T10:00:00.000000', ' ');", false);
+
+            migrationBuilder.Sql("INSERT INTO Bidding ( Naziv, Opis, ProcijenjenaVrijednost, Trajanje, Objavljen, Dobitnik) " +
+                "VALUES ('Skladištar', 'Rad u skladištu', '1500', '90 dana', '2022-06-01T10:00:00.000000', 'Hrvoje Leko');", false);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
