@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Ponude";
 }
-
+@if(User.IsInRole("administrator") || User.IsInRole("vlasnik") || User.IsInRole("poslodavac")){
 <h1 class="d-flex justify-content-center py-3 fw-bold">PONUDE POSLOVA</h1>
 
 <form asp-controller="Offers" asp-action="Index" method="get">
@@ -84,3 +84,4 @@
 }
     </tbody>
 </table>
+}

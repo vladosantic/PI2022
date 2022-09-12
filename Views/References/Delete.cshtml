@@ -3,58 +3,60 @@
 @{
     ViewData["Title"] = "Obriši referentnu opremu";
 }
-
-<h1 class="d-flex justify-content-center py-3 fw-bold">UKLONI REFERENTNU OPREMU</h1>
-<hr />
-<h4 class="fst-italic ms-3">Jeste li sigurni da želite obrisati ovu referentnu opremu?</h4>
-
-<div>
+@if (User.IsInRole("administrator") || User.IsInRole("vlasnik") || User.IsInRole("poslodavac"))
+{
+    <h1 class="d-flex justify-content-center py-3 fw-bold">UKLONI REFERENTNU OPREMU</h1>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            Naziv:
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Naziv)
-        </dd>
-        <dt class = "col-sm-2">
-            Kategorija:
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Kategorija)
-        </dd>
-        <dt class = "col-sm-2">
-            Opis:
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Opis)
-        </dd>
-        <dt class="col-sm-2">
-            Dobavljač
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Dobavljac) 
-        </dd>
-        <dt class = "col-sm-2">
-            Cijena Referentne Opreme:
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CijenaReferentneOpreme) KM
-        </dd>
-    </dl>
- </div>
- <hr />
- <div>
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <div class="btn-toolbar justify-content-between my-2" role="toolbar" aria-label="Toolbar with button groups">
-            <div class="btn-group" role="group" aria-label="First group">
-                <input type="submit" value="Obriši" class="btn btn-danger fw-bold" />
+    <h4 class="fst-italic ms-3">Jeste li sigurni da želite obrisati ovu referentnu opremu?</h4>
+
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class = "col-sm-2">
+                Naziv:
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Naziv)
+            </dd>
+            <dt class = "col-sm-2">
+                Kategorija:
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Kategorija)
+            </dd>
+            <dt class = "col-sm-2">
+                Opis:
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Opis)
+            </dd>
+            <dt class="col-sm-2">
+                Dobavljač
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Dobavljac) 
+            </dd>
+            <dt class = "col-sm-2">
+                Cijena Referentne Opreme:
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.CijenaReferentneOpreme) KM
+            </dd>
+        </dl>
+    </div>
+    <hr />
+    <div>
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <div class="btn-toolbar justify-content-between my-2" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group" role="group" aria-label="First group">
+                    <input type="submit" value="Obriši" class="btn btn-danger fw-bold" />
+                </div>
+                <div class="input-group">
+                    <a class="btn btn-danger fw-bold" asp-action="Index">&#11178; Natrag na Popis</a>
+                </div>
             </div>
-            <div class="input-group">
-                <a class="btn btn-danger fw-bold" asp-action="Index">&#11178; Natrag na Popis</a>
-            </div>
-        </div>
-    </form>
-</div>
-<hr />
+        </form>
+    </div>
+    <hr />
+}

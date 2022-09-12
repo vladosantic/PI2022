@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Natječaji";
 }
-
+@if(User.IsInRole("administrator") || User.IsInRole("vlasnik") || User.IsInRole("poslodavac") || User.IsInRole("zaposlenik")){
 <h1 class="d-flex justify-content-center py-3 fw-bold">NATJEČAJI</h1>
 
 <a class="btn btn-primary fw-bold px-3" asp-action="Create" style="color:white">Dodaj Novi Natječaj</a>
@@ -29,7 +29,10 @@
             <th>
                Dobitnik Natječaja
             </th>
-            <th>Opcije</th>
+            @if (User.IsInRole("administrator") || User.IsInRole("vlasnik") || User.IsInRole("poslodavac"))
+                {
+                    <th>Opcije</th>
+                }
         </tr>
     </thead>
     <tbody>
@@ -53,12 +56,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Dobitnik)
             </td>
+             @if (User.IsInRole("administrator") || User.IsInRole("vlasnik") || User.IsInRole("poslodavac")){
             <td>
                 <a class="btn btn-sm btn-warning fw-bold" style="color: white;" asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
                 <a class="btn btn-sm btn-info fw-bold" style="color: white;" asp-action="Details" asp-route-id="@item.Id">Detalji</a> |
                 <a class="btn btn-sm btn-danger fw-bold" style="color: white;" asp-action="Delete" asp-route-id="@item.Id">Obriši</a>
-            </td>
+            </td>}
         </tr>
 }
     </tbody>
 </table>
+}

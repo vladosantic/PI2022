@@ -3,76 +3,78 @@
 @{
     ViewData["Title"] = "Brisanje ponude";
 }
-
-<h1 class="d-flex justify-content-center py-3 fw-bold">BRISANJE PONUDE</h1>
-<hr />
-<h4 class="fst-italic ms-3">Jeste li sigurni da želite obrisati ovu ponudu?</h4>
-
-<div>
+@if (User.IsInRole("administrator") || User.IsInRole("vlasnik") || User.IsInRole("poslodavac"))
+{
+    <h1 class="d-flex justify-content-center py-3 fw-bold">BRISANJE PONUDE</h1>
     <hr />
-    <dl class="row ms-4">
-        <dt class = "col-sm-2">
-            Naziv:
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Naziv)
-        </dd>
-        <dt class = "col-sm-2">
-            Opis Posla:
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OpisPosla)
-        </dd>
-        <dt class = "col-sm-2">
-            Broj Osoba:
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BrojOsoba)
-        </dd>
-        <dt class = "col-sm-2">
-            Broj Sati:
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BrojSati)
-        </dd>
-        <dt class = "col-sm-2">
-            Cijena po Satu:
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CijenaSata)
-        </dd>
-        <dt class = "col-sm-2">
-            Potrebna Oprema:
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PotrebnaOprema)
-        </dd>
-        <dt class = "col-sm-2">
-            Početak Radova:
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PocetakRadova)
-        </dd>
-        <dt class = "col-sm-2">
-            Završetak Radova:
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ZavrsetakRadova)
-        </dd>
-    </dl>
-</div>
-<hr />
-<div>
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <div class="btn-toolbar justify-content-between my-2" role="toolbar" aria-label="Toolbar with button groups">
-            <div class="btn-group" role="group" aria-label="First group">
-                <input type="submit" value="Obriši" class="btn btn-danger fw-bold" />
+    <h4 class="fst-italic ms-3">Jeste li sigurni da želite obrisati ovu ponudu?</h4>
+
+    <div>
+        <hr />
+        <dl class="row ms-4">
+            <dt class = "col-sm-2">
+                Naziv:
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Naziv)
+            </dd>
+            <dt class = "col-sm-2">
+                Opis Posla:
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.OpisPosla)
+            </dd>
+            <dt class = "col-sm-2">
+                Broj Osoba:
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.BrojOsoba)
+            </dd>
+            <dt class = "col-sm-2">
+                Broj Sati:
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.BrojSati)
+            </dd>
+            <dt class = "col-sm-2">
+                Cijena po Satu:
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.CijenaSata)
+            </dd>
+            <dt class = "col-sm-2">
+                Potrebna Oprema:
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.PotrebnaOprema)
+            </dd>
+            <dt class = "col-sm-2">
+                Početak Radova:
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.PocetakRadova)
+            </dd>
+            <dt class = "col-sm-2">
+                Završetak Radova:
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.ZavrsetakRadova)
+            </dd>
+        </dl>
+    </div>
+    <hr />
+    <div>
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <div class="btn-toolbar justify-content-between my-2" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group" role="group" aria-label="First group">
+                    <input type="submit" value="Obriši" class="btn btn-danger fw-bold" />
+                </div>
+                <div class="input-group">
+                    <a class="btn btn-danger fw-bold" asp-action="Index">&#11178; Natrag na Popis</a>
+                </div>
             </div>
-            <div class="input-group">
-                <a class="btn btn-danger fw-bold" asp-action="Index">&#11178; Natrag na Popis</a>
-            </div>
-        </div>
-    </form>
-</div>
-<hr />
+        </form>
+    </div>
+    <hr />
+}

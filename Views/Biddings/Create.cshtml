@@ -3,62 +3,63 @@
 @{
     ViewData["Title"] = "Dodaj natječaj";
 }
-
-<div class="row d-flex justify-content-center">
-    <div class="col-md-9">
-        <form asp-action="Create">
-            <div class="card mt-2 mb-3">
-                <div class="card-header">
-                    <h1 class="d-flex justify-content-center py-3 fw-bold">DODAJ NATJEČAJ</h1>
-                </div>
-                <div class="card-body mx-4 py-2">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group mb-2">
-                        <label asp-for="Naziv" class="control-label fw-bold">Naziv natječaja:</label>
-                        <input asp-for="Naziv" class="form-control" />
-                        <span asp-validation-for="Naziv" class="text-danger"></span>
+@if (User.IsInRole("administrator") || User.IsInRole("vlasnik") || User.IsInRole("poslodavac"))
+{
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-9">
+            <form asp-action="Create">
+                <div class="card mt-2 mb-3">
+                    <div class="card-header">
+                        <h1 class="d-flex justify-content-center py-3 fw-bold">DODAJ NATJEČAJ</h1>
                     </div>
-                    <div class="form-group mb-2">
-                        <label asp-for="Opis" class="control-label fw-bold">Opis posla:</label>
-                        <input asp-for="Opis" class="form-control" />
-                        <span asp-validation-for="Opis" class="text-danger"></span>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label asp-for="ProcijenjenaVrijednost" class="control-label fw-bold">Procijenjena vrijednost:</label>
-                        <input asp-for="ProcijenjenaVrijednost" class="form-control" />
-                        <span asp-validation-for="ProcijenjenaVrijednost" class="text-danger"></span>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label asp-for="Trajanje" class="control-label fw-bold">Trajanje natječaja:</label>
-                        <input asp-for="Trajanje" class="form-control" />
-                        <span asp-validation-for="Trajanje" class="text-danger"></span>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label asp-for="Objavljen" class="control-label fw-bold">Objavljen:</label>
-                        <input asp-for="Objavljen" class="form-control" type="date" />
-                        <span asp-validation-for="Objavljen" class="text-danger"></span>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label asp-for="Dobitnik" class="control-label fw-bold">Dobitnik natječaja:</label>
-                        <input asp-for="Dobitnik" class="form-control" />
-                        <span asp-validation-for="Dobitnik" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="card-footer mb-2">
-                    <div class="btn-toolbar justify-content-between my-2" role="toolbar" aria-label="Toolbar with button groups">
-                        <div class="btn-group" role="group" aria-label="First group">
-                            <input type="submit" value="Dodaj" class="btn btn-success fw-bold" />
+                    <div class="card-body mx-4 py-2">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group mb-2">
+                            <label asp-for="Naziv" class="control-label fw-bold">Naziv natječaja:</label>
+                            <input asp-for="Naziv" class="form-control" />
+                            <span asp-validation-for="Naziv" class="text-danger"></span>
                         </div>
-                        <div class="input-group">
-                            <a class="btn btn-danger fw-bold" asp-action="Index">&#11178; Natrag na Popis</a>
+                        <div class="form-group mb-2">
+                            <label asp-for="Opis" class="control-label fw-bold">Opis posla:</label>
+                            <input asp-for="Opis" class="form-control" />
+                            <span asp-validation-for="Opis" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label asp-for="ProcijenjenaVrijednost" class="control-label fw-bold">Procijenjena vrijednost:</label>
+                            <input asp-for="ProcijenjenaVrijednost" class="form-control" />
+                            <span asp-validation-for="ProcijenjenaVrijednost" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label asp-for="Trajanje" class="control-label fw-bold">Trajanje natječaja:</label>
+                            <input asp-for="Trajanje" class="form-control" />
+                            <span asp-validation-for="Trajanje" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label asp-for="Objavljen" class="control-label fw-bold">Objavljen:</label>
+                            <input asp-for="Objavljen" class="form-control" type="date" />
+                            <span asp-validation-for="Objavljen" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label asp-for="Dobitnik" class="control-label fw-bold">Dobitnik natječaja:</label>
+                            <input asp-for="Dobitnik" class="form-control" />
+                            <span asp-validation-for="Dobitnik" class="text-danger"></span>
                         </div>
                     </div>
+                    <div class="card-footer mb-2">
+                        <div class="btn-toolbar justify-content-between my-2" role="toolbar" aria-label="Toolbar with button groups">
+                            <div class="btn-group" role="group" aria-label="First group">
+                                <input type="submit" value="Dodaj" class="btn btn-success fw-bold" />
+                            </div>
+                            <div class="input-group">
+                                <a class="btn btn-danger fw-bold" asp-action="Index">&#11178; Natrag na Popis</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-
+}
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

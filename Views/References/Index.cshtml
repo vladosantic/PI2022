@@ -3,11 +3,11 @@
 @{
     ViewData["Title"] = "Referentna oprema";
 }
-
+ @if(User.IsInRole("administrator") || User.IsInRole("vlasnik") || User.IsInRole("poslodavac") || User.IsInRole("zaposlenik")){
 <h1 class="d-flex justify-content-center py-3 fw-bold">REFERENTNA OPREMA</h1>
-
+ @if(User.IsInRole("administrator") || User.IsInRole("vlasnik") || User.IsInRole("poslodavac")){
 <a class="btn btn-primary fw-bold px-3" asp-action="Create" style="color:white">Dodaj Novu Referentnu Opremu</a>
-
+ }
 <table class="table table-hover table-bordered border-secondary mt-4">
     <thead style="background-color: #45526e; color: white;">
         <tr>
@@ -26,7 +26,10 @@
             <th>
                 Cijena Referentne Opreme
             </th>
-            <th>Opcije</th>
+            @if (User.IsInRole("administrator") || User.IsInRole("vlasnik") || User.IsInRole("poslodavac"))
+                {
+                    <th>Opcije</th>
+                }
         </tr>
     </thead>
     <tbody>
@@ -47,12 +50,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CijenaReferentneOpreme) KM
             </td>
+            @if(User.IsInRole("administrator") || User.IsInRole("vlasnik") || User.IsInRole("poslodavac")){
             <td>
                 <a class="btn btn-sm btn-warning fw-bold" style="color: white;" asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
                 <a class="btn btn-sm btn-info fw-bold" style="color: white;" asp-action="Details" asp-route-id="@item.Id">Detalji</a> |
                 <a class="btn btn-sm btn-danger fw-bold" style="color: white;" asp-action="Delete" asp-route-id="@item.Id">Obriši</a>
-            </td>
+            </td>}
         </tr>
 }
     </tbody>
 </table>
+}

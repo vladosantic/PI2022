@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Detalji posla";
 }
-
+@if(User.IsInRole("administrator") || User.IsInRole("vlasnik") || User.IsInRole("poslodavac") || User.IsInRole("zaposlenik")){
 <h1 class="d-flex justify-content-center py-3 fw-bold">DETALJI POSLA</h1>
 
 <div>
@@ -83,3 +83,4 @@
     </div>
 </div>
 <hr />
+}
