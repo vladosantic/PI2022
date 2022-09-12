@@ -3,10 +3,12 @@
 @{
     ViewData["Title"] = "Raspored";
 }
-
+@if(User.IsInRole("administrator") || User.IsInRole("vlasnik") || User.IsInRole("poslodavac") || User.IsInRole("zaposlenik")){
 <h1 class="d-flex justify-content-center py-3 fw-bold">RASPORED</h1>
 
-<a class="btn btn-primary fw-bolder" asp-action="Create" style="color:white">Dodaj</a>
+@if(User.IsInRole("administrator") || User.IsInRole("vlasnik") || User.IsInRole("poslodavac")){
+    <a class="btn btn-primary fw-bolder" asp-action="Create" style="color:white">Dodaj</a>
+}
 
 <table class="table table-hover table-bordered border-secondary mt-4">
     <thead style="background-color: #45526e; color: white;">
@@ -53,12 +55,15 @@
             <td>
                 @Html.Raw(Math.Round(item.ZavrsetakRada.Subtract(item.PocetakRada).TotalHours, 1))
             </td>
+            @if(User.IsInRole("administrator, vlasnik, poslodavac")){
             <td>
                 <a class="btn btn-sm btn-warning fw-bold" style="color: white;" asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
                 <a class="btn btn-sm btn-info fw-bold" style="color: white;" asp-action="Details" asp-route-id="@item.Id">Detalji</a> |
                 <a class="btn btn-sm btn-danger fw-bold" style="color: white;" asp-action="Delete" asp-route-id="@item.Id">Obriši</a>
             </td>
+            }
         </tr>
 }
     </tbody>
 </table>
+}

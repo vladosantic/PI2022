@@ -37,15 +37,20 @@
             <li class="nav-item">
                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Početna</a>
             </li>
+            @if(User.IsInRole("administrator")){
             <li class="nav-item">
                 <a class="nav-link text-light" asp-area="" asp-controller="Users" asp-action="Index">Korisnici</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-light" asp-area="" asp-controller="Roles" asp-action="Index">Uloge</a>
             </li>
+            }
+            @if(User.IsInRole("administrator") || User.IsInRole("vlasnik") || User.IsInRole("poslodavac")){
             <li class="nav-item">
                 <a class="nav-link text-light" asp-area="" asp-controller="Employees" asp-action="Index">Zaposlenici</a>
             </li>
+            }
+            @if(User.IsInRole("administrator") || User.IsInRole("vlasnik") || User.IsInRole("poslodavac") || User.IsInRole("zaposlenik")){
             <li class="nav-item">
                 <a class="nav-link text-light" asp-area="" asp-controller="Schedules" asp-action="Index">Raspored</a>
             </li>
@@ -55,18 +60,23 @@
             <li class="nav-item">
                 <a class="nav-link text-light" asp-area="" asp-controller="References" asp-action="Index">Referentna oprema</a>
             </li>
+            }
+            @if(User.IsInRole("administrator") || User.IsInRole("vlasnik") || User.IsInRole("poslodavac")){
             <li class="nav-item">
                 <a class="nav-link text-light" asp-area="" asp-controller="Offers" asp-action="Index">Ponude poslova</a>
-            </li>
+            </li>}
+            @if(User.IsInRole("administrator") || User.IsInRole("vlasnik") || User.IsInRole("poslodavac") || User.IsInRole("zaposlenik")){
             <li class="nav-item">
                 <a class="nav-link text-light" asp-area="" asp-controller="Jobs" asp-action="Index">Poslovi</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-light" asp-area="" asp-controller="Biddings" asp-action="Index">Natječaji</a>
-            </li>
+            </li>}
+            @if(User.IsInRole("administrator") || User.IsInRole("vlasnik")){
             <li class="nav-item">
                 <a class="nav-link text-light" asp-area="" asp-controller="Dashboard" asp-action="Index">Evidencija</a>
             </li>
+            }
         </ul>
                     <partial name="_LoginPartial" />
                 </div>

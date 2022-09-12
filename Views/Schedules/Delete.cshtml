@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Obriši podatak";
 }
-
+@if(User.IsInRole("administrator") || User.IsInRole("vlasnik") || User.IsInRole("poslodavac")){
 <h1 class="d-flex justify-content-center py-3 fw-bold">BRISANJE IZ RASPOREDA</h1>
 <hr />
 <h4 class="fst-italic ms-3">Jeste li sigurni da želite obrisati ovaj podatak iz rasporeda?</h4>
@@ -64,3 +64,4 @@
     </form>
 </div>
 <hr />
+}

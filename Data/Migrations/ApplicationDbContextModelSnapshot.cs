@@ -47,6 +47,36 @@ namespace PI2022.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            ConcurrencyStamp = "2bc227b6-5107-4296-b665-0d3c1cee3521",
+                            Name = "administrator",
+                            NormalizedName = "ADMINISTRATOR"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            ConcurrencyStamp = "dd1befb0-19cd-4eb5-a44f-155b70a5f525",
+                            Name = "vlasnik",
+                            NormalizedName = "VLASNIK"
+                        },
+                        new
+                        {
+                            Id = "3",
+                            ConcurrencyStamp = "2e4bb2ce-de17-482d-9375-342f27bbf18f",
+                            Name = "poslodavac",
+                            NormalizedName = "POSLODAVAC"
+                        },
+                        new
+                        {
+                            Id = "4",
+                            ConcurrencyStamp = "05baa814-6c5b-4e28-8b56-501ef107d95c",
+                            Name = "zaposlenik",
+                            NormalizedName = "ZAPOSLENIK"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -137,6 +167,88 @@ namespace PI2022.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "bcd4bb16-04bc-4a9c-b993-27b2468169c8",
+                            Email = "admin@firma.ba",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@FIRMA.BA",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEO66joHrTkrnT8KZujf/CetnZMINBHuNooRbJbHCp7s+BhuGMWAZ8Z1hZ+TzbfEhBA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "88026d26-6b3b-421a-8d50-ad39b05048e3",
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        },
+                        new
+                        {
+                            Id = "5",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "24429ae8-013c-41ef-95ab-0e8fa8dca8f6",
+                            Email = "test@firma.ba",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "TEST@FIRMA.BA",
+                            NormalizedUserName = "TEST",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFU3nDXoGOT/yVfjcnzltz3pPEfsW7hTOynJvJ/yKl1JCs/emGoICyJQUXTmzvPsZQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "558eab88-ecbf-4f74-9e2f-290f8f8c6ce2",
+                            TwoFactorEnabled = false,
+                            UserName = "test"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "bf9c26e9-6ea8-4884-9891-5432fd03f877",
+                            Email = "vlasnik@firma.ba",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "VLASNIK@FIRMA.BA",
+                            NormalizedUserName = "VLASNIK",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFLy/Ci3hgu9Lpo4HssUoopYzmrawMrwLFEba3MgF8yy4BplrNWUmt3F7F/MIqZnFg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "2680e038-1353-49f5-818d-73655e27dfc1",
+                            TwoFactorEnabled = false,
+                            UserName = "vlasnik"
+                        },
+                        new
+                        {
+                            Id = "3",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "eedccc0d-97d2-4fa8-9dc6-774c4ded1193",
+                            Email = "poslodavac@firma.ba",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "POSLODAVAC@FIRMA.BA",
+                            NormalizedUserName = "POSLODAVAC",
+                            PasswordHash = "AQAAAAEAACcQAAAAED/b+GPdTTXVJJ3Qd0zxnyIKHu7gIVUW3m/YPCy75UJLjql+3D/+jIgdt8lx71AL5w==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "f7a5583c-efe7-4f63-9dec-cfc70462f05f",
+                            TwoFactorEnabled = false,
+                            UserName = "poslodavac"
+                        },
+                        new
+                        {
+                            Id = "4",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "4f2bd184-a93a-42c3-83d7-30fdf9ef4208",
+                            Email = "zaposlenik@firma.ba",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ZASPOLENIK@FIRMA.BA",
+                            NormalizedUserName = "ZAPOSLENIK",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPAi3UkmE+GiVwHJg/s6hZ98SE6hkXVUgfhjYv8dlccMKouSwsy0uCa7iGrOSGrEIw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "76205956-a5c2-4175-9eaf-4a67c858b824",
+                            TwoFactorEnabled = false,
+                            UserName = "zaposlenik"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -201,6 +313,58 @@ namespace PI2022.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "1",
+                            RoleId = "1"
+                        },
+                        new
+                        {
+                            UserId = "1",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "1",
+                            RoleId = "3"
+                        },
+                        new
+                        {
+                            UserId = "1",
+                            RoleId = "4"
+                        },
+                        new
+                        {
+                            UserId = "2",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "2",
+                            RoleId = "3"
+                        },
+                        new
+                        {
+                            UserId = "2",
+                            RoleId = "4"
+                        },
+                        new
+                        {
+                            UserId = "3",
+                            RoleId = "3"
+                        },
+                        new
+                        {
+                            UserId = "3",
+                            RoleId = "4"
+                        },
+                        new
+                        {
+                            UserId = "4",
+                            RoleId = "4"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

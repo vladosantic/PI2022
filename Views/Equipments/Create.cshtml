@@ -3,89 +3,89 @@
 @{
     ViewData["Title"] = "Dodaj opremu";
 }
-
-<div class="row d-flex justify-content-center">
-    <div class="col-md-9">
-        <form asp-action="Create">
-            <div class="card mt-2 mb-3">
-                <div class="card-header">
-                    <h1 class="d-flex justify-content-center py-3 fw-bold">DODAJ OPREMU</h1>
-                </div>
-                <div class="card-body mx-4 py-2">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group mb-2">
-                        <label asp-for="Naziv" class="control-label fw-bold">Naziv:</label>
-                        <input asp-for="Naziv" class="form-control" />
-                        <span asp-validation-for="Naziv" class="text-danger"></span>
+@if(User.IsInRole("administrator") || User.IsInRole("vlasnik") || User.IsInRole("poslodavac") || User.IsInRole("zaposlenik")){
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-9">
+            <form asp-action="Create">
+                <div class="card mt-2 mb-3">
+                    <div class="card-header">
+                        <h1 class="d-flex justify-content-center py-3 fw-bold">DODAJ OPREMU</h1>
                     </div>
-                    <div class="form-group mb-2">
-                        <label asp-for="Kategorija" class="control-label fw-bold">Odaberite kategoriju:</label>
-                        <select asp-for="Kategorija" class="form-control" name="Kategorija">
-                            <option></option>
-                            <option>Ljetna kolekcija</option>
-                            <option>Jesenska kolekcija</option>
-                            <option>Zimska kolekcija</option>
-                            <option>Proljetna kolekcija</option>
-                            <option>Ostalo</option>
-                            <span asp-validation-for="Kategorija" class="text-danger"></span>
-                        </select>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label asp-for="Proizvodac" class="control-label fw-bold">Proizvođač:</label>
-                        <input asp-for="Proizvodac" class="form-control" />
-                        <span asp-validation-for="Proizvodac" class="text-danger"></span>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label asp-for="Dobavljac" class="control-label fw-bold">Dobavljač:</label>
-                        <input asp-for="Dobavljac" class="form-control" />
-                        <span asp-validation-for="Dobavljac" class="text-danger"></span>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label asp-for="DatumKupnje" class="control-label fw-bold">Datum kupnje:</label>
-                        <input asp-for="DatumKupnje" class="form-control" type="date" />
-                        <span asp-validation-for="DatumKupnje" class="text-danger"></span>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label asp-for="Kolicina" class="control-label fw-bold">Količina:</label>
-                        <input asp-for="Kolicina" class="form-control" />
-                        <span asp-validation-for="Kolicina" class="text-danger"></span>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label asp-for="NabavnaCijena" class="control-label fw-bold">Nabavna cijena:</label>
-                        <input asp-for="NabavnaCijena" class="form-control" />
-                        <span asp-validation-for="NabavnaCijena" class="text-danger"></span>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label asp-for="CijenaDostave" class="control-label fw-bold">Cijena dostave:</label>
-                        <input asp-for="CijenaDostave" class="form-control" />
-                        <span asp-validation-for="CijenaDostave" class="text-danger"></span>
-                    </div>
-                    <div class="form-group mb-4">
-                        <label asp-for="ReferentnaCijena" class="control-label fw-bold">Referentna cijena:</label>
-                        <select asp-for="ReferentnaCijena" class="form-control form-select-sm form-select">
-                            <option>0</option>
-                            @foreach (References x in Model.References)
-                            {
-                                <option>@x.CijenaReferentneOpreme</option>
-                            }
-                        </select>
-                    </div>
-                </div>
-                <div class="card-footer mb-2">
-                    <div class="btn-toolbar justify-content-between my-2" role="toolbar" aria-label="Toolbar with button groups">
-                        <div class="btn-group" role="group" aria-label="First group">
-                            <input type="submit" value="Dodaj" class="btn btn-success fw-bold" />
+                    <div class="card-body mx-4 py-2">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group mb-2">
+                            <label asp-for="Naziv" class="control-label fw-bold">Naziv:</label>
+                            <input asp-for="Naziv" class="form-control" />
+                            <span asp-validation-for="Naziv" class="text-danger"></span>
                         </div>
-                        <div class="input-group">
-                            <a class="btn btn-danger fw-bold" asp-action="Index">&#11178; Natrag na Popis</a>
+                        <div class="form-group mb-2">
+                            <label asp-for="Kategorija" class="control-label fw-bold">Odaberite kategoriju:</label>
+                            <select asp-for="Kategorija" class="form-control" name="Kategorija">
+                                <option></option>
+                                <option>Ljetna kolekcija</option>
+                                <option>Jesenska kolekcija</option>
+                                <option>Zimska kolekcija</option>
+                                <option>Proljetna kolekcija</option>
+                                <option>Ostalo</option>
+                                <span asp-validation-for="Kategorija" class="text-danger"></span>
+                            </select>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label asp-for="Proizvodac" class="control-label fw-bold">Proizvođač:</label>
+                            <input asp-for="Proizvodac" class="form-control" />
+                            <span asp-validation-for="Proizvodac" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label asp-for="Dobavljac" class="control-label fw-bold">Dobavljač:</label>
+                            <input asp-for="Dobavljac" class="form-control" />
+                            <span asp-validation-for="Dobavljac" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label asp-for="DatumKupnje" class="control-label fw-bold">Datum kupnje:</label>
+                            <input asp-for="DatumKupnje" class="form-control" type="date" />
+                            <span asp-validation-for="DatumKupnje" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label asp-for="Kolicina" class="control-label fw-bold">Količina:</label>
+                            <input asp-for="Kolicina" class="form-control" />
+                            <span asp-validation-for="Kolicina" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label asp-for="NabavnaCijena" class="control-label fw-bold">Nabavna cijena:</label>
+                            <input asp-for="NabavnaCijena" class="form-control" />
+                            <span asp-validation-for="NabavnaCijena" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label asp-for="CijenaDostave" class="control-label fw-bold">Cijena dostave:</label>
+                            <input asp-for="CijenaDostave" class="form-control" />
+                            <span asp-validation-for="CijenaDostave" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label asp-for="ReferentnaCijena" class="control-label fw-bold">Referentna cijena:</label>
+                            <select asp-for="ReferentnaCijena" class="form-control form-select-sm form-select">
+                                <option>0</option>
+                                @foreach (References x in Model.References)
+                                {
+                                    <option>@x.CijenaReferentneOpreme</option>
+                                }
+                            </select>
                         </div>
                     </div>
+                    <div class="card-footer mb-2">
+                        <div class="btn-toolbar justify-content-between my-2" role="toolbar" aria-label="Toolbar with button groups">
+                            <div class="btn-group" role="group" aria-label="First group">
+                                <input type="submit" value="Dodaj" class="btn btn-success fw-bold" />
+                            </div>
+                            <div class="input-group">
+                                <a class="btn btn-danger fw-bold" asp-action="Index">&#11178; Natrag na Popis</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-
+}
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

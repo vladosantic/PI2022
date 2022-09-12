@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Obriši opremu";
 }
-
+@if(User.IsInRole("administrator") || User.IsInRole("vlasnik") || User.IsInRole("poslodavac") || User.IsInRole("zaposlenik")){
 <h1 class="d-flex justify-content-center py-3 fw-bold">UKLONI OPREMU</h1>
 <hr />
 <h4 class="fst-italic ms-3">Jeste li sigurni da želite obrisati ovaj artikl?</h4>
@@ -82,3 +82,4 @@
     </form>
 </div>
 <hr />
+}
