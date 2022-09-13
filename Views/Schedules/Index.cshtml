@@ -55,7 +55,7 @@
             <td>
                 @Html.Raw(Math.Round(item.ZavrsetakRada.Subtract(item.PocetakRada).TotalHours, 1))
             </td>
-            @if(User.IsInRole("administrator, vlasnik, poslodavac")){
+            @if(User.IsInRole("administrator") || User.IsInRole("vlasnik") || User.IsInRole("poslodavac")){
             <td>
                 <a class="btn btn-sm btn-warning fw-bold" style="color: white;" asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
                 <a class="btn btn-sm btn-info fw-bold" style="color: white;" asp-action="Details" asp-route-id="@item.Id">Detalji</a> |
