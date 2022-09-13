@@ -63,7 +63,7 @@ namespace PI2022.Data.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ZaposlenOd = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Pozicija = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Certifikati = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Certifikati = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Placa = table.Column<Double>(type: "float", nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false)
                 },

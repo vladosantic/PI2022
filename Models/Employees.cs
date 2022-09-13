@@ -11,7 +11,7 @@
         public string Email { get; set; }
         public DateTime ZaposlenOd { get; set; }
         public string Pozicija { get; set; }
-        public string Certifikati { get; set; }
+        public string? Certifikati { get; set; }
         public Double Placa { get; set; }
         public bool Status { get; set; }
     }
